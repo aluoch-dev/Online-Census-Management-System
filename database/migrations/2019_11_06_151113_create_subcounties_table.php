@@ -16,7 +16,8 @@ class CreateSubcountiesTable extends Migration
         Schema::create('subcounties', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('subcounty_name');
-            $table->integer('county_id');
+            $table->Integer('county_id');
+            $table->foreign('county_id')->references('id')->on('counties');
             $table->timestamps();
         });
     }
