@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWastedisposalsTable extends Migration
+class CreateEmploymentStatusesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateWastedisposalsTable extends Migration
      */
     public function up()
     {
-        Schema::create('wastedisposals', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('disposalmeans');
+        Schema::create('employment_statuses', function (Blueprint $table) {
+            $table->bigIncrements('id')->unique();
+            $table->string('employment_status');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateWastedisposalsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('wastedisposals');
+        Schema::dropIfExists('employment_statuses');
     }
 }

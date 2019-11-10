@@ -6,6 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class County extends Model
 {
+
+    /**
+    * Get the subcounties for the county.
+    */
+   public function subcounties()
+   {
+       return $this->hasMany('App\Subcounty');
+   }
+
     /**
      * Get the schools for the county.
      */

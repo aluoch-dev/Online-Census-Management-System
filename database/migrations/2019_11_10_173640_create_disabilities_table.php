@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSubcountiesTable extends Migration
+class CreateDisabilitiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateSubcountiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('subcounties', function (Blueprint $table) {
+        Schema::create('disabilities', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('subcounty_name');
-            $table->Integer('county_id');
-            $table->foreign('county_id')->references('id')->on('counties');
             $table->timestamps();
         });
     }
@@ -29,9 +26,6 @@ class CreateSubcountiesTable extends Migration
      */
     public function down()
     {
-        Schema::table('subcounties', function (Blueprint $table) {
-            
-            Schema::dropIfExists('subcounties');
-        });
+        Schema::dropIfExists('disabilities');
     }
 }

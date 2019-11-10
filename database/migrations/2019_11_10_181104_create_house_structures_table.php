@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDeathentriesTable extends Migration
+class CreateHouseStructuresTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,9 @@ class CreateDeathentriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('deathentries', function (Blueprint $table) {
+        Schema::create('house_structures', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('household_id');
-            $table->string('fname');
-            $table->string('sname');
-            $table->string('relationship');
-            $table->string('filename')->nullable();
+            $table->string('structure');
             $table->timestamps();
         });
     }
@@ -31,6 +27,6 @@ class CreateDeathentriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('deathentries');
+        Schema::dropIfExists('house_structures');
     }
 }
