@@ -14,10 +14,12 @@ class CreateSchoolsTable extends Migration
     public function up()
     {
         Schema::create('schools', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('id')->unique();
             $table->string('school_name');
-            $table->integer('county_id');
-            $table->integer('subcounty_id');
+            $table->bigInteger('county_id')->unsigned();
+            $table->foreign('county_id')->references('id')->on('counties');
+            $table->bigInteger('subcounty_id')->unsigned();
+            $table->foreign('subcounty_id')->references('id')->on('subcounties');
             $table->timestamps();
         });
     }

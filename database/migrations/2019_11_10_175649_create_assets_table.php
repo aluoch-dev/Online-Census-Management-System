@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateElectronicownershipsTable extends Migration
+class CreateAssetsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateElectronicownershipsTable extends Migration
      */
     public function up()
     {
-        Schema::create('electronicownerships', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->integer('household_id');
-            $table->integer('electronic_code');
-            $table->integer('electronic_count');
+        Schema::create('assets', function (Blueprint $table) {
+            $table->bigIncrements('id')->unique();
+            $table->string('asset');
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ class CreateElectronicownershipsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('electronicownerships');
+        Schema::dropIfExists('assets');
     }
 }

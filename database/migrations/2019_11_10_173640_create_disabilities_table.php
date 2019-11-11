@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWastedisposalsTable extends Migration
+class CreateDisabilitiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class CreateWastedisposalsTable extends Migration
      */
     public function up()
     {
-        Schema::create('wastedisposals', function (Blueprint $table) {
+        Schema::create('disabilities', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('disposalmeans');
             $table->timestamps();
         });
     }
@@ -27,6 +26,6 @@ class CreateWastedisposalsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('wastedisposals');
+        Schema::dropIfExists('disabilities');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSubcountiesTable extends Migration
+class CreateHouseStructuresTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateSubcountiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('subcounties', function (Blueprint $table) {
+        Schema::create('house_structures', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('subcounty_name');
-            $table->integer('county_id');
+            $table->string('structure');
             $table->timestamps();
         });
     }
@@ -28,9 +27,6 @@ class CreateSubcountiesTable extends Migration
      */
     public function down()
     {
-        Schema::table('subcounties', function (Blueprint $table) {
-            
-            Schema::dropIfExists('subcounties');
-        });
+        Schema::dropIfExists('house_structures');
     }
 }

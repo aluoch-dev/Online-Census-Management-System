@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePinregistrationsTable extends Migration
+class CreateStatesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class CreatePinregistrationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('pinregistrations', function (Blueprint $table) {
+        Schema::create('states', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('state');
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ class CreatePinregistrationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pinregistrations');
+        Schema::dropIfExists('states');
     }
 }

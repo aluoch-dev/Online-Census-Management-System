@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCookingmeansTable extends Migration
+class CreateSubcountiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateCookingmeansTable extends Migration
      */
     public function up()
     {
-        Schema::create('cookingmeans', function (Blueprint $table) {
+        Schema::create('subcounties', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('means');
+            $table->string('subcounty_name');
+            $table->bigInteger('county_id')->unsigned();
+            $table->foreign('county_id')->references('id')->on('counties');
             $table->timestamps();
         });
     }
@@ -27,6 +29,9 @@ class CreateCookingmeansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cookingmeans');
+        Schema::table('subcounties', function (Blueprint $table) {
+            
+            Schema::dropIfExists('subcounties');
+        });
     }
 }
