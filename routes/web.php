@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+//Household Routes
+Route::get('household/general','HouseholdController@create')->name('household.general'); 
+Route::post('household/general', 'HouseholdController@store')->name('household.store');
