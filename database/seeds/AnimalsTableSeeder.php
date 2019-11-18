@@ -11,6 +11,27 @@ class AnimalsTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('animals')->insert(array(
+
+            array(
+                'animal' => 'cow'
+            ),
+
+            array(
+                'animal' => 'goat'
+            ),
+
+            array(
+                'animal' => 'sheep'
+            ),
+
+            array(
+                'animal' => 'donkey'
+            ),
+
+            array(
+                'animal' => 'poultry'
+            ),
+        ));
     }
 }
