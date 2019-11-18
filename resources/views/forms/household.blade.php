@@ -15,6 +15,25 @@
                             <input type="hidden" name="user_id" value="">
                         </div>
 
+                        <div>
+                            
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="state_id" class="col-md-4 col-form-label text-md-right">{{ __('State') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="state_id" type="text" placeholder="Enter Keywords" />
+
+                                @error('state_id')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+
                         <div class="form-group row">
                             <label for="state_id" class="col-md-4 col-form-label text-md-right">{{ __('State') }}</label>
 

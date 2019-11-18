@@ -101,4 +101,15 @@ class HouseholdController extends Controller
     {
         //
     }
+
+    Public function countyComplete(Request $request){
+
+        $term = $request->get('term');
+        $data = DB::table('couties')->where("title","LIKE","%$term%")->get();
+        foreach ($data as $result)
+        {
+            $results[] = ['value' => $result->title, 'link' => 'users/'.$result->slug];
+        }
+        return response()->json($results);       
+    }
 }
