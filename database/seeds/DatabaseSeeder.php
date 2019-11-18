@@ -11,18 +11,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-       DB::table('roles')->insert(array(
-            array(
-            'name' => 'user',
-            ),
-            array(
-            'name' => 'admin',
-            ),
-            array(
-            'name' => 'enumerator'
-            ),
-        ));
-
-
+        $this->call([
+            RolesTableSeeder::class, 
+            StatesTableSeeder::class,
+            CountiesTableSeeder::class,
+            SubCountiesTableSeeder::class,
+            AnimalsTableSeeder::class,
+            GendersTableSeeder::class,
+        ]);
     }
 }
