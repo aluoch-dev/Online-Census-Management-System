@@ -8,39 +8,15 @@
                 <div class="card-header">{{ __('Household Census') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('household.general') }}">
+                    <form method="POST" action="{{ route('createHousehold') }}">
                         @csrf
-                        
-                        <div class="form-group row">
-                            <input type="hidden" name="user_id" value="">
-                        </div>
-
-                        <div>
-                            
-                        </div>
 
                         <div class="form-group row">
                             <label for="state_id" class="col-md-4 col-form-label text-md-right">{{ __('State') }}</label>
 
                             <div class="col-md-6">
-                                <input id="state_id" type="text" placeholder="Enter Keywords" />
-
-                                @error('state_id')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <input id="search" name="search" type="text" class="form-control" placeholder="State" />
                             </div>
-                        </div>
-
-
-                        <div class="form-group row">
-                            <label for="state_id" class="col-md-4 col-form-label text-md-right">{{ __('State') }}</label>
-
-                            <div class="col-md-6">
-                                <select id="state_id" type="text" class="form-control @error('state_id') is-invalid @enderror" name="state_id" value="{{ old('state_id') }}" required autocomplete="state_id" autofocus>
-                                    <option value=""></option>
-                                </select>
 
                                 @error('state_id')
                                     <span class="invalid-feedback" role="alert">
