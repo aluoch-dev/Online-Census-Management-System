@@ -18,5 +18,9 @@ Route::get('/', function () {
 Auth::routes();
 
 //Household Routes
-Route::get('household/general','HouseholdController@create')->name('household.general'); 
-Route::post('household/general', 'HouseholdController@store')->name('household.store');
+Route::get('household/create','HouseholdController@create')->name('createHousehold'); 
+Route::get('autocomplete', 'HouseholdController@search');
+Route::post('household/store', 'HouseholdController@store')->name('storeHousehold');
+
+
+
