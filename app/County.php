@@ -39,4 +39,4 @@ class County extends Model
         return $this->belongTo('App\Household');
     }
 }
-}
+
