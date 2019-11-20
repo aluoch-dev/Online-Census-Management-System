@@ -17,10 +17,15 @@ Route::get('/', function () {
 
 Auth::routes();
 
+
 //Household Routes
 Route::get('household/create','HouseholdController@create')->name('createHousehold'); 
 Route::get('autocomplete', 'HouseholdController@search');
 Route::post('household/store', 'HouseholdController@store')->name('storeHousehold');
+Route::get('citizens/create', 'CitizenController@create')->name('createCitizen');
+Route::post('citizens/store', 'CitizenController@store')->name('storeCitizen');
+Route::get('animals/create', 'AnimalController@create')->name('createAnimal');
+Route::post('animals/store', 'AnimalController@store')->name('storeAnimal');
 
 
 

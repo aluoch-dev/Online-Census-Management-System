@@ -16,9 +16,7 @@
 
                             <div class="col-md-6">   
                                 <select id="state_id" type="text" class="form-control autocomplete @error('state_id') is-invalid @enderror" name="state_id" value="{{ old('state_id') }}" required autocomplete="state_id" autofocus>
-                                @foreach ($states as $state) 
-                                    <option value="{{$state->id}}">{{$state->state}}</option>
-                                @endforeach
+                                
                                 </select>
                                 @error('county_id')
                                     <span class="invalid-feedback" role="alert">
@@ -33,9 +31,7 @@
 
                             <div class="col-md-6">   
                                 <select id="county_id" type="text" class="form-control autocomplete @error('county_id') is-invalid @enderror" name="county_id" value="{{ old('county_id') }}" required autocomplete="county_id" autofocus>
-                                @foreach ($counties as $county) 
-                                    <option value="{{$county->id}}">{{$county->county_name}}</option>
-                                @endforeach
+                                
                                 </select>
                                 @error('county_id')
                                     <span class="invalid-feedback" role="alert">
@@ -50,9 +46,7 @@
 
                             <div class="col-md-6">
                                 <select id="subcounty_id" type="text" class="form-control  autocomplete @error('subcounty_id') is-invalid @enderror" name="subcounty_id" value="{{ old('subcounty_id') }}" required autocomplete="subcounty">
-                                @foreach ($subcounties as $subcounty) 
-                                    <option value="{{$subcounty->id}}">{{$subcounty->subcounty_name}}</option>
-                                @endforeach
+                                
                                 </select>
 
                                 @error('subcounty_id')
@@ -68,9 +62,7 @@
 
                             <div class="col-md-6">
                                 <select id="school_id" type="text" class="form-control autocomplete @error('school_id') is-invalid @enderror" name="school_id" required autocomplete="school">
-                                @foreach ($schools as $school) 
-                                    <option value="{{$school->id}}">{{$school->school_name}}</option>
-                                @endforeach
+                                
                                 </select>
 
                                 @error('school_id')
@@ -86,9 +78,7 @@
 
                             <div class="col-md-6">
                                 <select id="cookingmeans_id" type="text" class="form-control autocomplete @error('cookingmeans_id') is-invalid @enderror" name="cookingmeans_id" required autocomplete="cooking means">
-                                @foreach ($amenities as $amenity) 
-                                    <option value="{{$amenity->id}}">{{$amenity->amenity}}</option>
-                                @endforeach
+                                
                                 </select>
                                 @error('cookingmeans_id')
                                     <span class="invalid-feedback" role="alert">
@@ -103,9 +93,7 @@
 
                             <div class="col-md-6">
                                 <select id="structure_id" type="text" class="form-control autocomplete @error('structure_id') is-invalid @enderror" name="structure_id" required autocomplete="type of structure">
-                                @foreach ($amenities as $amenity) 
-                                    <option value="{{$amenity->id}}">{{$amenity->amenity}}</option>
-                                @endforeach
+                                
                                 </select>
                                 @error('structure_id')
                                     <span class="invalid-feedback" role="alert">
@@ -120,9 +108,7 @@
 
                             <div class="col-md-6">
                                 <select id="disposal_id" type="text" class="form-control autocomplete @error('disposal_id') is-invalid @enderror" name="disposal_id" required autocomplete="type of structure">
-                                @foreach ($amenities as $amenity) 
-                                    <option value="{{$amenity->id}}">{{$amenity->amenity}}</option>
-                                @endforeach
+                                
                                 </select>
                                 @error('structure_id')
                                     <span class="invalid-feedback" role="alert">

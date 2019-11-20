@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
             SubCountiesTableSeeder::class,
             AnimalsTableSeeder::class,
             GendersTableSeeder::class,
+            AmenitiesTableSeeder::class,
+            SchoolsTableSeeder::class,
         ]);
     }
 }

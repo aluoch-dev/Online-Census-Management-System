@@ -14,9 +14,9 @@ class CreateHouseholdsTable extends Migration
     public function up()
     {
         Schema::create('households', function (Blueprint $table) {
-            $table->bigIncrements('id')->unique();
-            $table->bigInteger('head_id')->unsigned();
-            $table->foreign('head_id')->references('national_id')->on('users');
+            $table->bigIncrements('id')->unique()
+            $table->bigInteger('head_id')->unsigned()->nullable();
+            $table->foreign('head_id')->references('id')->on('users');
             $table->bigInteger('state_id')->unsigned();
             $table->foreign('state_id')->references('id')->on('states');
             $table->bigInteger('county_id')->unsigned();
@@ -28,7 +28,7 @@ class CreateHouseholdsTable extends Migration
             $table->bigInteger('cookingmeans_id')->unsigned();
             $table->foreign('cookingmeans_id')->references('id')->on('amenities');
             $table->bigInteger('structure_id')->unsigned();
-            $table->foreign('structure_id')->references('id')->on('house_structures');
+            $table->foreign('structure_id')->references('id')->on('amenities');
             $table->bigInteger('disposal_id')->unsigned();
             $table->foreign('disposal_id')->references('id')->on('amenities');
             $table->timestamps();

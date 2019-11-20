@@ -12,7 +12,7 @@ class Household extends Model
      *
      * @var array
      */
-    protected $guarded = []; //use guarded since all fields are massa assignable
+    protected $guarded = []; //use guarded since all fields are mass assignable
 
     /**
     * Get the citizens for the specified household.
