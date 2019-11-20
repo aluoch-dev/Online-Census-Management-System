@@ -15,7 +15,7 @@ class CreateAssetOwnershipsTable extends Migration
     {
         Schema::create('asset_ownerships', function (Blueprint $table) {
             $table->bigIncrements('id')->unique();
-            $table->bigInteger('household_id')->unsigned();
+            $table->bigInteger('household_id')->unsigned()->nullable();
             $table->foreign('household_id')->references('id')->on('households');
             $table->bigInteger('asset_id')->unsigned();
             $table->foreign('asset_id')->references('id')->on('assets');

@@ -15,7 +15,7 @@ class CreateAnimalOwnershipsTable extends Migration
     {
         Schema::create('animal_ownerships', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('household_id')->unsigned();
+            $table->bigInteger('household_id')->unsigned()->nullable();
             $table->foreign('household_id')->references('id')->on('households');
             $table->bigInteger('animal_id')->unsigned();
             $table->foreign('animal_id')->references('id')->on('animals');

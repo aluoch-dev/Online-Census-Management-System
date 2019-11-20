@@ -15,11 +15,12 @@ class CreateDisabilitiesTable extends Migration
     {
         Schema::create('disabilities', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('disability');
             $table->timestamps();
         });
     }
 
-    /**
+    /*
      * Reverse the migrations.
      *
      * @return void

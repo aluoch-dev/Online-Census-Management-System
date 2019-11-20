@@ -15,7 +15,7 @@ class CreateDeathEntriesTable extends Migration
     {
         Schema::create('death_entries', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('household_id')->unsigned();
+            $table->bigInteger('household_id')->unsigned()->nullable();
             $table->foreign('household_id')->references('id')->on('households');
             $table->string('fname');
             $table->string('sname');

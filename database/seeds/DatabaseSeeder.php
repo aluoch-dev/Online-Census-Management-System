@@ -20,6 +20,10 @@ class DatabaseSeeder extends Seeder
             GendersTableSeeder::class,
             AmenitiesTableSeeder::class,
             SchoolsTableSeeder::class,
+            AssetsTableSeeder::class,
+            DisabilitiesTableSeeder::class,
+            EducationlevelsTableSeeder::class,
+            RelationshipsTableSeeder::class,
         ]);
     }
 }
