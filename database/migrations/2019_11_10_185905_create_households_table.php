@@ -14,7 +14,7 @@ class CreateHouseholdsTable extends Migration
     public function up()
     {
         Schema::create('households', function (Blueprint $table) {
-            $table->bigIncrements('id')->unique();
+            $table->bigIncrements('id')->unique()
             $table->bigInteger('head_id')->unsigned()->nullable();
             $table->foreign('head_id')->references('id')->on('users');
             $table->bigInteger('state_id')->unsigned();
