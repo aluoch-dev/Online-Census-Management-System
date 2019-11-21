@@ -1,13 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Asset;
 
 use Illuminate\Http\Request;
-use App\Animal;
-use App\Animalownership;
-use App\Household;
 
-class AnimalController extends Controller
+class AssetController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,8 +24,8 @@ class AnimalController extends Controller
      */
     public function create()
     {
-        $animals = Animal::all();
-        return view('animal.createanimal', compact('animals'));
+        $assets = Asset::all();
+        return view('asset.create');
     }
 
     /**
@@ -38,18 +36,7 @@ class AnimalController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'animal_id' => '',
-            'animal_count' => '', 
- 
-         ]);
- 
-         $animalownership = new \App\Animalownership;
-         $animalownership-> animal_id = $request->get('animal_id');
-         $animalownership-> animal_count = $request->get('animal_count');
-         
-         $animalownership -> save();
-         return redirect('/citizens/create')->with('success', 'Animal ownership has been added');
+        //
     }
 
     /**
@@ -83,18 +70,7 @@ class AnimalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'animal_id' => '',
-            'animal_count' => '', 
- 
-         ]);
- 
-         $animalownership = App\Animalownership:: find($id);
-         $animalownership-> animal_id = $request->get('animal_id');
-         $animalownership-> animal_count = $request->get('animal_count');
-         
-         $animalownership -> save();
-         return redirect('/citizens/create')->with('success', 'Animal ownership has been updated');
+        //
     }
 
     /**
@@ -105,8 +81,6 @@ class AnimalController extends Controller
      */
     public function destroy($id)
     {
-        $animalownership = animalownership::find($id);
-        $animalownership->delete();
-        return redirect('/citizens/create')->with('success', 'household has been deleted Successfully');
+        //
     }
 }

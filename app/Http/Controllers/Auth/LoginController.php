@@ -19,14 +19,37 @@ class LoginController extends Controller
     */
 
     use AuthenticatesUsers;
-
     /**
      * Where to redirect users after login.
      *
      * @var string
      */
-    protected $redirectTo = '/household/create';
-
+    protected $redirectTo;
+   
+    public function redirectTo()
+    {
+        switch(Auth::user()->role){
+            case 1:
+            $this->redirectTo = '/user';
+            return $this->redirectTo;
+                break;
+            case 2:
+                    $this->redirectTo = '/admin';
+                return $this->redirectTo;
+                break;
+            case 3:
+                $this->redirectTo = '/enumerator';
+                return $this->redirectTo;
+                break;
+            
+            default:
+                $this->redirectTo = '/login';
+                return $this->redirectTo;
+        }
+         
+        // return $next($request);
+    } 
+    
     /**
      * Create a new controller instance.
      *
@@ -34,6 +57,6 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        //$this->middleware('guest')->except('logout');
     }
 }
