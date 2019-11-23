@@ -20,7 +20,7 @@
                                     <option value="{{$state->id}}">{{$state->state}}</option>
                                 @endforeach
                                 </select>
-                                @error('county_id')
+                                @error('state_id')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

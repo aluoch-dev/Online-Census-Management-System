@@ -12,20 +12,21 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');  
+    return view('welcome');   
 });
 
 Auth::routes();
-
-
-//Household Routes
+Route::get('/admin/index', 'AdminController@index')->name('admin');
+Route::get('/enumerator/index', 'EnumeratorController@index')->name('enumerator');
 Route::get('household/create','HouseholdController@create')->name('createHousehold'); 
-Route::get('autocomplete', 'HouseholdController@search');
+
 Route::post('household/store', 'HouseholdController@store')->name('storeHousehold');
+Route::post('household/update{$id}', 'householdController@update')->name('updateHousehold');
 Route::get('citizens/create', 'CitizenController@create')->name('createCitizen');
 Route::post('citizens/store', 'CitizenController@store')->name('storeCitizen');
 Route::get('animals/create', 'AnimalController@create')->name('createAnimal');
 Route::post('animals/store', 'AnimalController@store')->name('storeAnimal');
-
-
+Route::get('assets/create', 'AssetController@create')->name('createAsset');
+Route::post('assets/store', 'AssetController@store')->name('storeAsset'); 
+Route::get('/home', 'HomeController@index')->name('home');
 

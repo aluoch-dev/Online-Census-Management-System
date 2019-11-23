@@ -9,15 +9,8 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
-
-
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <link href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -83,21 +76,5 @@
             @yield('content')
         </main>
     </div>
-
-    <div class="footer">
-        <p>|Copyright © 2019. All rights reserved.|</p>
-    </div>
-
-    <script type="text/javascript">
-        var route = "{{ url('autocomplete') }}";
-        $('#search').typeahead({
-            source:  function (term, process) {
-            return $.get(route, { term: term }, function (data) {
-                    return process(data);
-                });
-            }
-        });
-    </script>
-
 </body>
 </html>

@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('role_id')->unsigned()->default(1);
             $table->foreign('role_id')->references('id')->on('roles');
-            $table->bigInteger('national_id')->unique()->unsigned();
+            $table->bigInteger('national_id')->unsigned();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

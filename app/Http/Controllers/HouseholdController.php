@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use App\Household;
 use App\State;
 use App\County;
 use App\Subcounty;
 use App\School;
-use App\Housestructure;
 use App\Amenity;
 
 class HouseholdController extends Controller
@@ -34,7 +34,7 @@ class HouseholdController extends Controller
         $counties = County::all();
         $subcounties = Subcounty::all();
         $schools = School::all();
-        $amenities = Amenity::all();
+        $amenities = Amenity::all(); 
     
 
         return view('household.create',compact('states', 'counties', 'subcounties', 'schools',  'amenities'));
