@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             DisabilitiesTableSeeder::class,
             EducationlevelsTableSeeder::class,
             RelationshipsTableSeeder::class,
+            UsersTableSeeder::class,
         ]);
     }
 }

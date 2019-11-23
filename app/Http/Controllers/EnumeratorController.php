@@ -6,5 +6,8 @@ use Illuminate\Http\Request;
 
 class EnumeratorController extends Controller
 {
-    //
+    public function index(){
+        
+        return view('enumerator.welcome');
+    }
 }

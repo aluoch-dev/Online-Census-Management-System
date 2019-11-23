@@ -63,10 +63,7 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
 
 
-        'admin' => \App\Http\Middleware\Admin::class,
-        'enumerator' => \App\Http\Middleware\Enumerator::class,
-        'user' => \App\Http\Middleware\User::class,
-    ];
+         ];
 
     /**
      * The priority-sorted list of middleware.
