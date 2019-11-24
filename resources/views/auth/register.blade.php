@@ -11,6 +11,8 @@
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
+                        <input id="role_id" type="hidden" class="form-control @error('role_id') is-invalid @enderror" name="role_id" value="{{ old('role_id') }}" required autocomplete="role_id" autofocus>
+
                         <div class="form-group row">
                             <label for="national_id" class="col-md-4 col-form-label text-md-right">{{ __('National ID') }}</label>
 
