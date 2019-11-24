@@ -59,19 +59,19 @@ class HouseholdController extends Controller
             'disposal_id' =>'required'
  
          ]);
- 
-         $household = new Household([
-             'state_id' => $request->get('state_id'),
-             'county_id' =>$request->get('county_id'),
-             'subcounty_id' =>$request->get('subcounty_id'),
-             'school_id' => $request->get('school_id'),
-             'cookingmeans_id' => $request->get('cookingmeans_id'),
-             'structure_id' => $request->get('structure_id'),
-             'disposal_id' => $request->get('disposal_id'),
-         ]);
+
+         $household = new Household;
+         $household-> head_id = \Auth::user()->id;
+         $household-> state_id = $request->get('state_id');
+         $household-> county_id = $request->get('county_id');
+         $household-> subcounty_id = $request->get('subcounty_id');
+         $household-> school_id = $request->get('school_id');
+         $household-> cookingmeans_id = $request->get('cookingmeans_id');
+         $household-> structure_id = $request->get('structure_id');
+         $household-> disposal_id = $request->get('disposal_id');
  
          $household -> save();
-         return redirect('/animals/create')->with('success', 'Household has been added');
+         return redirect('/citizens/create')->with('success', 'Household has been added');
     }
 
     /**
@@ -107,7 +107,6 @@ class HouseholdController extends Controller
     {
 
         $request->validate([
-            'head_id' => 'required',
             'state_id' => 'required',
             'county_id' => 'required',
             'subcounty_id' => 'required',
@@ -119,7 +118,6 @@ class HouseholdController extends Controller
          ]);
  
          $household = household:: find($id);
-         $household->head_id = $request->get('head_id');
          $household->state_id = $request->get('state_id');
          $household->county_id = $request->get('county_id');
          $household->school_id = $request->get('school_id');

@@ -12,7 +12,7 @@ class Household extends Model
      *
      * @var array
      */
-    protected $guarded = []; 
+    protected $guarded = [];  
 
     /**
     * Get the citizens for the specified household.

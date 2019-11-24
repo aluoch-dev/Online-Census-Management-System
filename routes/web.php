@@ -32,5 +32,5 @@ Route::get('animals/create', 'AnimalController@create')->name('createAnimal');
 Route::post('animals/store', 'AnimalController@store')->name('storeAnimal');
 Route::get('assets/create', 'AssetController@create')->name('createAsset');
 Route::post('assets/store', 'AssetController@store')->name('storeAsset'); 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home'); 
 
