@@ -19,7 +19,11 @@ Auth::routes();
 Route::get('/admin/index', 'AdminController@index')->name('admin');
 Route::get('/enumerator/index', 'EnumeratorController@index')->name('enumerator');
 Route::get('household/create','HouseholdController@create')->name('createHousehold'); 
-
+Route::post('getstates','HouseholdController@getStates')->name('getStates');
+Route::post('getcounties','HouseholdController@getCounties')->name('getCounties');
+Route::post('getsubcounties','HouseholdController@getSubcounties')->name('getSubcounties');
+Route::post('getamenities','HouseholdController@getAmenities')->name('getAmenities');
+Route::post('getschools','HouseholdController@getSchools')->name('getSchools');
 Route::post('household/store', 'HouseholdController@store')->name('storeHousehold');
 Route::post('household/update{$id}', 'householdController@update')->name('updateHousehold');
 Route::get('citizens/create', 'CitizenController@create')->name('createCitizen');

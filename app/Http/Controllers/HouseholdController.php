@@ -10,6 +10,7 @@ use App\County;
 use App\Subcounty;
 use App\School;
 use App\Amenity;
+use DB;
 
 class HouseholdController extends Controller
 {
@@ -144,16 +145,146 @@ class HouseholdController extends Controller
     }
 
     /**
-     * autocomplete states
-     */
+     * AJAX request
+     * 
+   */
+   public function getStates(Request $request){
 
-    public function search(Request $request)
-    {
-          $search = $request->get('term');
-      
-          $result = State::where('state', 'LIKE', '%'. $search. '%')->get();
- 
-          return response()->json($result);
-            
-    } 
+    if($request->get('query'))
+     {
+      $query = $request->get('query');
+      $data = DB::table('states')
+        ->where('state', 'LIKE', "%{$query}%")
+        ->get();
+      $output = '<ul class="dropdown-menu" style="display:block; position:relative">';
+      foreach($data as $row)
+      {
+       $output .= '
+       <li><a href="#">'.$row->state.'</a></li>
+       ';
+      }
+      $output .= '</ul>';
+      echo $output;
+     }
+    }
+
+  /**
+    * AJAX request
+    * 
+   */
+  public function getCounties(Request $request){
+
+    if($request->get('query'))
+     {
+      $query = $request->get('query');
+      $data = DB::table('counties')
+        ->where('county_name', 'LIKE', "%{$query}%")
+        ->get();
+      $output = '<ul class="dropdown-menu" style="display:block; position:relative">';
+      foreach($data as $row)
+      {
+       $output .= '
+       <li><a href="#">'.$row->county_name.'</a></li>
+       ';
+      }
+      $output .= '</ul>';
+      echo $output;
+     }
+  }
+
+  /**
+    * AJAX request
+    * 
+   */
+  public function getSubcounties(Request $request){
+
+    if($request->get('query'))
+     {
+      $query = $request->get('query');
+      $data = DB::table('subcounties')
+        ->where('subcounty_name', 'LIKE', "%{$query}%")
+        ->get();
+      $output = '<ul class="dropdown-menu" style="display:block; position:relative">';
+      foreach($data as $row)
+      {
+       $output .= '
+       <li><a href="#">'.$row->subcounty_name.'</a></li>
+       ';
+      }
+      $output .= '</ul>';
+      echo $output;
+     }
+  }
+
+
+  /**
+    * AJAX request
+    * 
+   */
+  public function getSchools(Request $request){
+
+    if($request->get('query'))
+     {
+      $query = $request->get('query');
+      $data = DB::table('schools')
+        ->where('school_name', 'LIKE', "%{$query}%")
+        ->get();
+      $output = '<ul class="dropdown-menu" style="display:block; position:relative">';
+      foreach($data as $row)
+      {
+       $output .= '
+       <li><a href="#">'.$row->school_name.'</a></li>
+       ';
+      }
+      $output .= '</ul>';
+      echo $output;
+     }
+  }
+
+  /**
+    * AJAX request
+    * 
+   */
+  public function getAmenities(Request $request){
+
+    if($request->get('query'))
+     {
+      $query = $request->get('query');
+      $data = DB::table('amenities')
+        ->where('amenity', 'LIKE', "%{$query}%")
+        ->get();
+      $output = '<ul class="dropdown-menu" style="display:block; position:relative">';
+      foreach($data as $row)
+      {
+       $output .= '
+       <li><a href="#">'.$row->amenity.'</a></li>
+       ';
+      }
+      $output .= '</ul>';
+      echo $output;
+     }
+  }
+    
+    /*
+   AJAX request
+   
+   public function counties(Request $request){
+
+    $search = $request->search;
+
+    if($search == ''){
+       $counties = County::orderby('county_name','asc')->select('id','county_name')->limit(5)->get();
+    }else{
+       $counties = County::orderby('county_name','asc')->select('id','county_name')->where('county_name', 'like', '%' .$search . '%')->limit(5)->get();
+    }
+
+    $response = array();
+    foreach($counties as $county){
+       $response[] = array("value"=>$county->id,"label"=>$county->name);
+    }
+
+    echo json_encode($response);
+    exit;
+ }*/
+
 }
