@@ -25,6 +25,10 @@ class EducationlevelsTableSeeder extends Seeder
                 'education_level' => 'University',
             ),
 
+            array(
+                'education_level' => 'N/A',
+            ),
+
         ));
     }
 }

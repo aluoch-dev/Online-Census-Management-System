@@ -25,9 +25,12 @@ Route::post('getsubcounties','HouseholdController@getSubcounties')->name('getSub
 Route::post('getamenities','HouseholdController@getAmenities')->name('getAmenities');
 Route::post('getschools','HouseholdController@getSchools')->name('getSchools');
 Route::post('household/store', 'HouseholdController@store')->name('storeHousehold');
-Route::post('household/update{$id}', 'householdController@update')->name('updateHousehold');
-Route::get('citizens/create', 'CitizenController@create')->name('createCitizen');
-Route::post('citizens/store', 'CitizenController@store')->name('storeCitizen');
+Route::post('household/edit/{household}', 'HouseholdController@edit')->name('editHousehold');
+Route::post('household/update/{household}', 'householdController@update')->name('updateHousehold');
+Route::get('citizen/create', 'CitizenController@create')->name('createCitizen');
+Route::post('citizen/store', 'CitizenController@store')->name('storeCitizen');
+Route::post('citizen/edit/{citizen}', 'CitizenController@edit')->name('editCitizen');
+Route::post('citizen/update/{citizen}', 'CitizenController@update')->name('updateCitizen');
 Route::get('animals/create', 'AnimalController@create')->name('createAnimal');
 Route::post('animals/store', 'AnimalController@store')->name('storeAnimal');
 Route::get('assets/create', 'AssetController@create')->name('createAsset');

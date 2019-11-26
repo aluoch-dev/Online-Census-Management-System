@@ -5,20 +5,19 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Household Census') }}</div>
+                <div class="card-header">{{ __('Household Member Details') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('storeHousehold') }}">
+                    <form method="POST" action="{{ route('storeCitizen') }}" enctype="multipart/form-data" >
                         @csrf
 
                         <div class="form-group row">
-                            <label for="state_id" class="col-md-4 col-form-label text-md-right">{{ __('State') }}</label>
+                            <label for="fname" class="col-md-4 col-form-label text-md-right">{{ __('First Name') }}</label>
 
                             <div class="col-md-6">   
-                                <select id="state_id" type="text" class="form-control autocomplete @error('state_id') is-invalid @enderror" name="state_id" value="{{ old('state_id') }}" required autocomplete="state_id" autofocus>
+                                <input id="fname" type="text" class="form-control autocomplete @error('fname') is-invalid @enderror" name="fname" value="{{ old('fname') }}" required autocomplete="fname" autofocus>
                                 
-                                </select>
-                                @error('county_id')
+                                @error('fname')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -27,13 +26,12 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="county_id" class="col-md-4 col-form-label text-md-right">{{ __('County') }}</label>
+                            <label for="mname" class="col-md-4 col-form-label text-md-right">{{ __('Middle Name') }}</label>
 
                             <div class="col-md-6">   
-                                <select id="county_id" type="text" class="form-control autocomplete @error('county_id') is-invalid @enderror" name="county_id" value="{{ old('county_id') }}" required autocomplete="county_id" autofocus>
+                                <input id="mname" type="text" class="form-control autocomplete @error('mname') is-invalid @enderror" name="mname" value="{{ old('mname') }}" required autocomplete="mname" autofocus>
                                 
-                                </select>
-                                @error('county_id')
+                                @error('mname')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -42,14 +40,12 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="subcounty_id" class="col-md-4 col-form-label text-md-right">{{ __('SubCounty') }}</label>
+                            <label for="lname" class="col-md-4 col-form-label text-md-right">{{ __('Last Name') }}</label>
 
-                            <div class="col-md-6">
-                                <select id="subcounty_id" type="text" class="form-control  autocomplete @error('subcounty_id') is-invalid @enderror" name="subcounty_id" value="{{ old('subcounty_id') }}" required autocomplete="subcounty">
+                            <div class="col-md-6">   
+                                <input id="lname" type="text" class="form-control autocomplete @error('lname') is-invalid @enderror" name="lname" value="{{ old('lname') }}" required autocomplete="lname" autofocus>
                                 
-                                </select>
-
-                                @error('subcounty_id')
+                                @error('lname')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -58,14 +54,15 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="school_id" class="col-md-4 col-form-label text-md-right">{{ __('Nearby School') }}</label>
+                            <label for="gender_id" class="col-md-4 col-form-label text-md-right">{{ __('Gender') }}</label>
 
-                            <div class="col-md-6">
-                                <select id="school_id" type="text" class="form-control autocomplete @error('school_id') is-invalid @enderror" name="school_id" required autocomplete="school">
-                                
+                            <div class="col-md-6">   
+                                <select id="gender_id" type="text" class="form-control autocomplete @error('gender_id') is-invalid @enderror" name="gender_id" value="{{ old('gender_id') }}" required autocomplete="gender_id" autofocus>
+                                    @foreach ($genders as $gender) 
+                                        <option value="{{$gender->id}}">{{$gender->gender}}</option>
+                                    @endforeach
                                 </select>
-
-                                @error('school_id')
+                                @error('gender_id')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -74,13 +71,12 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="cookingmeans_id" class="col-md-4 col-form-label text-md-right">{{ __('Cooking Means') }}</label>
+                            <label for="age" class="col-md-4 col-form-label text-md-right">{{ __('Age') }}</label>
 
-                            <div class="col-md-6">
-                                <select id="cookingmeans_id" type="text" class="form-control autocomplete @error('cookingmeans_id') is-invalid @enderror" name="cookingmeans_id" required autocomplete="cooking means">
+                            <div class="col-md-6">   
+                                <input id="age" type="number" class="form-control autocomplete @error('age') is-invalid @enderror" name="age" value="{{ old('age') }}" required autocomplete="age" autofocus>
                                 
-                                </select>
-                                @error('cookingmeans_id')
+                                @error('age')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -89,13 +85,16 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="structure_id" class="col-md-4 col-form-label text-md-right">{{ __('House Structure') }}</label>
+                            <label for="relationship_id" class="col-md-4 col-form-label text-md-right">{{ __('Relation') }}</label>
 
                             <div class="col-md-6">
-                                <select id="structure_id" type="text" class="form-control autocomplete @error('structure_id') is-invalid @enderror" name="structure_id" required autocomplete="type of structure">
-                                
+                                <select id="relationship_id" type="text" class="form-control  autocomplete @error('relationship_id') is-invalid @enderror" name="relationship_id" value="{{ old('relationship_id') }}" required autocomplete="subcounty">
+                                    @foreach ($relationships as $relationship) 
+                                        <option value="{{$relationship->id}}">{{$relationship->relationship}}</option>
+                                    @endforeach
                                 </select>
-                                @error('structure_id')
+
+                                @error('relationship_id')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -104,13 +103,16 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="disposal_id" class="col-md-4 col-form-label text-md-right">{{ __('Waste Disposal ') }}</label>
+                            <label for="education_id" class="col-md-4 col-form-label text-md-right">{{ __('Highest Level of Education') }}</label>
 
                             <div class="col-md-6">
-                                <select id="disposal_id" type="text" class="form-control autocomplete @error('disposal_id') is-invalid @enderror" name="disposal_id" required autocomplete="type of structure">
-                                
+                                <select id="education_id" type="text" class="form-control autocomplete @error('education_id') is-invalid @enderror" name="education_id" autocomplete="school">
+                                    @foreach ($educationlevels as $educationlevel) 
+                                        <option value="{{$educationlevel->id}}">{{$educationlevel->education_level}}</option>
+                                    @endforeach
                                 </select>
-                                @error('structure_id')
+
+                                @error('education_id')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -118,8 +120,119 @@
                             </div>
                         </div>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
+                        <div class="form-group row">
+                            <label for="field_id" class="col-md-4 col-form-label text-md-right">{{ __('Field of Study') }}</label>
+
+                            <div class="col-md-6">
+                                <select id="field_id" type="text" class="form-control autocomplete @error('field_id') is-invalid @enderror" name="field_id" autocomplete="cooking means">
+                                @foreach ($studyfields as $studyfield) 
+                                    <option value="{{$studyfield->id}}">{{$studyfield->study_field}}</option>
+                                @endforeach
+                                </select>
+                                @error('field_id')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="disability_id" class="col-md-4 col-form-label text-md-right">{{ __('Disability') }}</label>
+
+                            <div class="col-md-6">
+                                <select id="disability_id" type="text" class="form-control autocomplete @error('disability_id') is-invalid @enderror" name="disability_id" required autocomplete="type of structure">
+                                @foreach ($disabilities as $disability) 
+                                    <option value="{{$disability->id}}">{{$disability->disability}}</option>
+                                @endforeach
+                                </select>
+                                @error('disability_id')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="employment_id" class="col-md-4 col-form-label text-md-right">{{ __('Employment Status ') }}</label>
+
+                            <div class="col-md-6">
+                                <select id="employment_id" type="text" class="form-control autocomplete @error('employment_id') is-invalid @enderror" name="employment_id" autocomplete="type of structure">
+                                @foreach ($employmentstatuses as $employmentstatus) 
+                                    <option value="{{$employmentstatus->id}}">{{$employmentstatus->employment_status}}</option>
+                                @endforeach
+                                </select>
+                                @error('employment_id')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="occupation_id" class="col-md-4 col-form-label text-md-right">{{ __('Occupation ') }}</label>
+
+                            <div class="col-md-6">
+                                <select id="occupation_id" type="text" class="form-control autocomplete @error('occupation_id') is-invalid @enderror" name="occupation_id" autocomplete="occupation">
+                                @foreach ($occupations as $occupation) 
+                                    <option value="{{$occupation->id}}">{{$occupation->occupation}}</option>
+                                @endforeach
+                                </select>
+                                @error('occupation_id')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="income_source" class="col-md-4 col-form-label text-md-right">{{ __('Income Source') }}</label>
+
+                            <div class="col-md-6">
+                                <select id="income_source" type="text" class="form-control autocomplete @error('income_source') is-invalid @enderror" name="income_source" autocomplete="income source">
+                                @foreach ($occupations as $occupation) 
+                                    <option value="{{$occupation->id}}">{{$occupation->occupation}}</option>
+                                @endforeach
+                                </select>
+                                @error('income_source')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                                <label for="image" class="col-md-4 col-form-label text-md-right">{{ __('Upload image') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="image" type="file" class="form-control{{ $errors->has('image') ? ' is-invalid' : '' }}" name="image">
+
+                                    @if ($errors->has('image'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('image') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-6 ">
+        
+                            <form method="post" action= " {{ route('editHousehold', $household->id) }}"> 
+                            @csrf
+                            @method('put')
+        
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('Click Back to Update Previous Records') }}
+                                </button>
+                            </form>
+                            </div>
+
+                            <div class="col-md-6 ">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Submit to Proceed') }}
                                 </button>

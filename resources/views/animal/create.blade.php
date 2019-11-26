@@ -90,9 +90,11 @@
                         
                         <div class="form-group row">
                             <div class="col-md-6 ">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Click Back to Update Records') }}
-                                </button>
+                                <form method="get" action="{{ route('updateCitizen') }}">
+                                    <button type="submit" class="btn btn-primary">
+                                        {{ __('Click Back to Update Records') }}
+                                    </button>
+                                </form>
                             </div>
 
                             <div class="col-md-6 ">

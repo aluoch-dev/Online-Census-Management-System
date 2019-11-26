@@ -22,5 +22,12 @@ class Household extends Model
         return $this->hasMany('App\Citizen');  
     }
 
+    /**
+     * Get the user that owns the household.
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\User', 'user_id');
+    }
 
 }

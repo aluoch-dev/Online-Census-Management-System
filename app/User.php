@@ -36,8 +36,18 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+
     public function role()
     {
-        return $this->belongsTo(Role::class);
+        return $this->belongsTo('App\Role');
+    }
+
+
+    /**
+     * Get the household record associated with the user.
+     */
+    public function household()
+    {
+        return $this->hasOne('App\Household');
     }
 }

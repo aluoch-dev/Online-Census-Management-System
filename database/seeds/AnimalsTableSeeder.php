@@ -33,6 +33,11 @@ class AnimalsTableSeeder extends Seeder
                 'animal' => 'poultry'
             ),
 
+            array(
+                'animal' => 'N/A'
+            ),
+
+
             ));
     }
 }

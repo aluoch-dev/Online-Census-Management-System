@@ -61,7 +61,7 @@ class HouseholdController extends Controller
          ]);
 
          $household = new Household;
-         $household-> head_id = \Auth::user()->id;
+         $household-> user_id = \Auth::user()->id;
          $household-> state_id = $request->get('state_id');
          $household-> county_id = $request->get('county_id');
          $household-> subcounty_id = $request->get('subcounty_id');
@@ -71,7 +71,7 @@ class HouseholdController extends Controller
          $household-> disposal_id = $request->get('disposal_id');
  
          $household -> save();
-         return redirect('/citizens/create')->with('success', 'Household has been added');
+         return redirect('/citizens/create')->with('success', 'Citizen has been added');
     }
 
     /**
@@ -93,7 +93,8 @@ class HouseholdController extends Controller
      */
     public function edit($id)
     {
-        //
+      $household = \App\Household::find($id);
+      return view('household.edit')->withHousehold($household);
     }
 
     /**

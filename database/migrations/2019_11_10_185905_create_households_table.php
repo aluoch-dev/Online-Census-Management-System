@@ -15,8 +15,8 @@ class CreateHouseholdsTable extends Migration
     {
         Schema::create('households', function (Blueprint $table) {
             $table->bigIncrements('id')->unique();
-            $table->bigInteger('head_id')->unsigned()->nullable();
-            $table->foreign('head_id')->references('id')->on('users');
+            $table->bigInteger('user_id')->unsigned()->nullable()->unique();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->bigInteger('state_id')->unsigned();
             $table->foreign('state_id')->references('id')->on('states');
             $table->bigInteger('county_id')->unsigned();

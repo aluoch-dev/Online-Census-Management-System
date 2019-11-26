@@ -25,6 +25,9 @@ class DatabaseSeeder extends Seeder
             EducationlevelsTableSeeder::class,
             RelationshipsTableSeeder::class,
             UsersTableSeeder::class,
+            StudiesTableSeeder::class,
+            EmploymentsTableSeeder::class,
+            OccupationsTableSeeder::class,
         ]);
     }
 }

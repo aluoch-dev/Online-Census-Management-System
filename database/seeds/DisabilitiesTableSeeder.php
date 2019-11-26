@@ -25,6 +25,10 @@ class DisabilitiesTableSeeder extends Seeder
                 'disability' => 'hearing',
             ),
 
+            array(
+                'disability' => 'N/A',
+            ),
+
         ));
     }
 }
