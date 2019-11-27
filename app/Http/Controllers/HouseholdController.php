@@ -49,7 +49,8 @@ class HouseholdController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        
+      $request->validate([
             'state_id' => 'required',
             'county_id' => 'required',
             'subcounty_id' => 'required',
@@ -70,8 +71,18 @@ class HouseholdController extends Controller
          $household-> structure_id = $request->get('structure_id');
          $household-> disposal_id = $request->get('disposal_id');
  
-         $household -> save();
-         return redirect('/citizens/create')->with('success', 'Citizen has been added');
+        //check if household exists
+         $household = Household::firstOrCreate(['user_id'=>\Auth::user()->id]);
+         $household->save();
+
+        if($household->wasRecentlyCreated){
+          //echo 'Created successfully';
+          return redirect('/citizen/create')->with('success', 'Household created succesfully');
+        } else {
+            //echo 'Already exist';
+            return redirect('/citizen/create')->with('success', 'Household already exists');
+        }
+         
     }
 
     /**
@@ -106,6 +117,7 @@ class HouseholdController extends Controller
      */
     public function update(Request $request, $id)
     {
+          
 
         $request->validate([
             'state_id' => 'required',
@@ -127,7 +139,7 @@ class HouseholdController extends Controller
          $household->disposal_id = $request->get('disposal_id');
          $household->save();
     
-        return redirect('/citizens/craete')->with('success', 'Details have been updated');
+        return redirect('/citizen/create')->with('success', 'Details have been updated');
     }
 
     /**
@@ -140,7 +152,7 @@ class HouseholdController extends Controller
     {
         $household = household::find($id);
         $household->delete();
-        return redirect('/citizens/create')->with('success', 'household has been deleted Successfully');
+        return redirect('/citizen/create')->with('success', 'household has been deleted Successfully');
     }
 
     /**
