@@ -59,6 +59,7 @@ class CitizenController extends Controller
      */
     public function store(Request $request)
     {
+        
         $request->validate([
             'fname' =>'required|string',
             'mname' =>'required|string',
