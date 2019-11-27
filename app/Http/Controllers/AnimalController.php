@@ -49,12 +49,15 @@ class AnimalController extends Controller
  
          ]);
  
+         
          $animalownership = new \App\Animalownership;
+         $animalownership->household_id = \Auth::user()->household->id;
          $animalownership-> animal_id = $request->get('animal_id');
          $animalownership-> animal_count = $request->get('animal_count');
          
+         
          $animalownership -> save();
-         return redirect('/citizens/create')->with('success', 'Animal ownership has been added');
+         return redirect('/asset/create')->with('success', 'Animal ownership has been added');
     }
 
     /**
@@ -99,7 +102,7 @@ class AnimalController extends Controller
          $animalownership-> animal_count = $request->get('animal_count');
          
          $animalownership -> save();
-         return redirect('/citizens/create')->with('success', 'Animal ownership has been updated');
+         return redirect('/asset/create')->with('success', 'Animal ownership has been updated');
     }
 
     /**
@@ -112,6 +115,6 @@ class AnimalController extends Controller
     {
         $animalownership = animalownership::find($id);
         $animalownership->delete();
-        return redirect('/citizens/create')->with('success', 'household has been deleted Successfully');
+        return redirect('/asset/create')->with('success', 'Animal_ownership has been deleted Successfully');
     }
 }
