@@ -12,7 +12,15 @@ class Household extends Model
      *
      * @var array
      */
-    protected $guarded = [];  
+    protected $fillable = [
+        'state_id',
+        'county_id', 
+        'subcounty_id',
+        'school_id',
+        'cookingmeans_id',
+        'structure_id',
+        'disposal_id',
+    ];  
 
     /**
     * Get the citizens for the specified household.

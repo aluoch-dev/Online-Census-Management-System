@@ -72,16 +72,20 @@ class HouseholdController extends Controller
          $household-> disposal_id = $request->get('disposal_id');
  
         //check if household exists
-         $household = Household::firstOrCreate(['user_id'=>\Auth::user()->id]);
-         $household->save();
+        $household = Household::firstOrCreate(['user_id'=>\Auth::user()->id]);
+        $household->save();
+         
+         //return response()->json($household);
+        
 
         if($household->wasRecentlyCreated){
-          //echo 'Created successfully';
+          echo 'Created successfully';
           return redirect('/citizen/create')->with('success', 'Household created succesfully');
         } else {
-            //echo 'Already exist';
+            echo 'Already exist';
             return redirect('/citizen/create')->with('success', 'Household already exists');
-        }
+       }
+        
          
     }
 
@@ -104,8 +108,15 @@ class HouseholdController extends Controller
      */
     public function edit($id)
     {
+
+        $states = State::all();
+        $counties = County::all();
+        $subcounties = Subcounty::all();
+        $schools = School::all();
+        $amenities = Amenity::all(); 
+    
       $household = \App\Household::find($id);
-      return view('household.edit')->withHousehold($household);
+      return view('household.edit', compact('household','states', 'counties', 'subcounties', 'schools',  'amenities' ));
     }
 
     /**
