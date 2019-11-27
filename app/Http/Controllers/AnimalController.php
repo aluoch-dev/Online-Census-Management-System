@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Animal;
 use App\Animalownership;
 use App\Household;
+use App\User;
+use App\Citizen;
+use Auth;
 
 class AnimalController extends Controller
 {
@@ -27,7 +30,9 @@ class AnimalController extends Controller
     public function create()
     {
         $animals = Animal::all();
-        return view('animal.createanimal', compact('animals'));
+        $citizen = \App\Citizen::where('household_id', Auth::user()->household->id)->first();
+
+        return view('animal.create', compact('animals', 'citizen'));
     }
 
     /**

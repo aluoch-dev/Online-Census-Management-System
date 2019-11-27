@@ -43,12 +43,10 @@ class CitizenController extends Controller
         $disabilities = Disability::all();
         $employmentstatuses = Employmentstatus::all();
         $occupations = Occupation::all();
-        //$household = Household::find($id);
-        
-        //$citizen = \Auth::user()->household->citizen->id->get();
-        $household = \App\Household::where('household_id', \Auth::user()->household->id);
-        return response()->json($household);
-        //return view('citizen.create', compact('genders', 'relationships', 'studyfields','disabilities', 'employmentstatuses', 'occupations', 'educationlevels', 'household'));
+
+        $household = \App\Household::where('id', Auth::user()->household->id)->first();
+        //return response()->json($household);
+        return view('citizen.create', compact('genders', 'relationships', 'studyfields','disabilities', 'employmentstatuses', 'occupations', 'educationlevels', 'household'));
     }
 
     /**
@@ -63,7 +61,7 @@ class CitizenController extends Controller
         $request->validate([
             'fname' =>'required|string',
             'mname' =>'required|string',
-            'lname' =>'required|string',
+            'sname' =>'required|string',
             'gender_id' => 'required',
             'relationship_id' => 'required',
             'age' =>'required',
@@ -79,8 +77,9 @@ class CitizenController extends Controller
 
         $citizen = new Citizen;
         $citizen->household_id = \Auth::user()->household->id;
+        $citizen->fname= $request->get('fname');
         $citizen->mname= $request->get('mname');
-        $citizen->lname= $request->get('lname');
+        $citizen->sname= $request->get('sname');
         $citizen->gender_id= $request->get('gender_id');
         $citizen->age= $request->get('age');
         $citizen->relationship_id= $request->get('relationship_id');
@@ -93,14 +92,14 @@ class CitizenController extends Controller
         if($request->has('image'))
          {
             $file = $request->image;
-            $name= time().$file->getClientOriginalName();
+            $name= time().$file->getClientOriginasname();
             $file->move(public_path().'/images/uploads/', $name);
             $product->filename= '/images/uploads/'.$name;
          }
         $citizen-> save();
         //return response()->json($citizen);
 
-        return redirect('/animals/create')->with('success', 'Citizen has been added');
+        return redirect('/animal/create')->with('success', 'Citizen has been added');
 
 
     }
@@ -124,8 +123,20 @@ class CitizenController extends Controller
      */
     public function edit($id)
     {
+        $genders = Gender::all();
+        $relationships = Relationship::all();
+        $studyfields = Studyfield::all();
+        $educationlevels = Educationlevel::all();
+        $disabilities = Disability::all();
+        $employmentstatuses = Employmentstatus::all();
+        $occupations = Occupation::all();
+
+        $household = \App\Household::where('id', Auth::user()->household->id)->first();
+        //return response()->json($household);
         $citizen = \App\Citizen::find($id);
-        return view('citizen.edit')->withCitizen($citizen);
+        return view('citizen.edit', compact('citizen','genders', 'relationships', 'studyfields','disabilities', 'employmentstatuses', 'occupations', 'educationlevels', 'household'));
+        
+        
     }
 
     /**
@@ -140,10 +151,10 @@ class CitizenController extends Controller
         $request->validate([
             'fname' =>'required|string',
             'mname' =>'required|string',
-            'lname' =>'required|string',
+            'sname' =>'required|string',
             'gender_id' => 'required',
             'relationship_id' => 'required',
-            'age' =>'required|bigInteger',
+            'age' =>'required',
             'relationship_id' =>'required',
             'field_id' =>'required',
             'disability_id' =>'required',
@@ -156,18 +167,18 @@ class CitizenController extends Controller
 
 
         $citizen = citizen:: find($id);
-        $citizen->fname =$request-get('fname');
-        $citizen->mname = $request-get('mname');
-        $citizen->lname = $request-get('lname');
-        $citizen->gender_id = $request-get('gender_id');
-        $citizen->Age = $request-get('age');
-        $citizen->relationship_id = $request-get('relationship_id');
-        $citizen->field_id = $request-get('field_id');
-        $citizen->disability_id = $request-get('disability_id');
-        $citizen->education_id = $request-get('education_id');
-        $citizen->employment_id = $request-get('employment_id');
-        $citizen->occupation_id = $request-get('occupation_id');
-        $citizen->income_source = $request-get('income_source');
+        $citizen->fname =$request->get('fname');
+        $citizen->mname = $request->get('mname');
+        $citizen->sname = $request->get('sname');
+        $citizen->gender_id = $request->get('gender_id');
+        $citizen->Age = $request->get('age');
+        $citizen->relationship_id = $request->get('relationship_id');
+        $citizen->field_id = $request->get('field_id');
+        $citizen->disability_id = $request->get('disability_id');
+        $citizen->education_id = $request->get('education_id');
+        $citizen->employment_id = $request->get('employment_id');
+        $citizen->occupation_id = $request->get('occupation_id');
+        $citizen->income_source = $request->get('income_source');
         if($request->has('image'))
          {
             $file = $request->image;
@@ -177,7 +188,7 @@ class CitizenController extends Controller
          }
         $citizen-> save();
 
-        return redirect('/animals/create')->with('success', 'Citizen has been added');
+        return redirect('/animal/create')->with('success', 'Citizen has been added');
 
     }
 

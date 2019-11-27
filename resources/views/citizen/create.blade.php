@@ -8,6 +8,14 @@
                 <div class="card-header">{{ __('Household Member Details') }}</div>
 
                 <div class="card-body">
+                        <div class="form-group row">
+                            <div class="col-md-6 ">
+                                <a href="{{ route('editHousehold', $household->id) }}" class="btn-sm btn btn-primary">{{ __('Click Back to Update Previous Records') }}</a>
+                            </div>
+            
+                        </div>
+                </div>
+
                     <form method="POST" action="{{ route('storeCitizen') }}" enctype="multipart/form-data" >
                         @csrf
 
@@ -40,12 +48,12 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="lname" class="col-md-4 col-form-label text-md-right">{{ __('Last Name') }}</label>
+                            <label for="sname" class="col-md-4 col-form-label text-md-right">{{ __('Last Name') }}</label>
 
                             <div class="col-md-6">   
-                                <input id="lname" type="text" class="form-control autocomplete @error('lname') is-invalid @enderror" name="lname" value="{{ old('lname') }}" required autocomplete="lname" autofocus>
+                                <input id="sname" type="text" class="form-control autocomplete @error('sname') is-invalid @enderror" name="sname" value="{{ old('sname') }}" required autocomplete="sname" autofocus>
                                 
-                                @error('lname')
+                                @error('sname')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -220,24 +228,12 @@
                         </div>
 
                         <div class="form-group row">
-                            <div class="col-md-6 ">
-        
-                            <form method="post" action= " {{ route('editHousehold', $household->id) }}"> 
-                            @csrf
-                            @method('put')
-        
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Click Back to Update Previous Records') }}
-                                </button>
-                            </form>
-                            </div>
-
-                            <div class="col-md-6 ">
+                        <div class="col-md-6 ">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Submit to Proceed') }}
                                 </button>
                             </div>
-                        </div>
+                        </div>                        
                     </form>
                 </div>
             </div>
