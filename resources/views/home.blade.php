@@ -14,7 +14,17 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    <p>You have succesfully completed the enumeration process. Proceed to print out
+                    ENUMERATION REPORT.</p>
+                    
+                    <div class="form-group row">
+                            <div class="col-md-6 ">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('Print Enumeration Report') }}
+                                </button>
+                            </div>
+
+                        </div>
                 </div>
             </div>
         </div>

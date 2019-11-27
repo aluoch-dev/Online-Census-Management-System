@@ -33,7 +33,11 @@ Route::get('citizen/edit/{citizen}', 'CitizenController@edit')->name('editCitize
 Route::any('citizen/update/{citizen}', 'CitizenController@update')->name('updateCitizen');
 Route::get('animal/create', 'AnimalController@create')->name('createAnimal');
 Route::post('animal/store', 'AnimalController@store')->name('storeAnimal');
-Route::get('assets/create', 'AssetController@create')->name('createAsset');
-Route::post('assets/store', 'AssetController@store')->name('storeAsset'); 
+Route::get('animal/edit/{animal}', 'AnimalController@edit')->name('editAnimal');
+Route::any('animal/update/{animal}', 'AnimalController@update')->name('updateAnimal');
+Route::get('asset/create', 'AssetController@create')->name('createAsset');
+Route::post('asset/store', 'AssetController@store')->name('storeAsset'); 
+Route::get('asset/edit/{asset}', 'AssetController@edit')->name('editAsset'); 
+Route::any('asset/update/{asset}', 'AssetController@update')->name('updateAsset'); 
 Route::get('/home', 'HomeController@index')->name('home'); 
 

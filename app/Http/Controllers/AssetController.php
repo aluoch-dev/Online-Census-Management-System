@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 use App\Asset;
+use App\Animal;
+use App\Assetownership;
+use App\User;
+use Auth;
 
 use Illuminate\Http\Request;
 
@@ -25,7 +29,9 @@ class AssetController extends Controller
     public function create()
     {
         $assets = Asset::all();
-        return view('asset.create');
+        $animalownership = \App\Animalownership::where('household_id', Auth::user()->household->id)->first();
+
+        return view('asset.create', compact('assets', 'animalownership'));
     }
 
     /**
@@ -36,7 +42,21 @@ class AssetController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'asset_id' => '',
+            'asset_count' => '', 
+ 
+         ]);
+ 
+         
+         $assetownership = new \App\Assetownership;
+         $assetownership->household_id = \Auth::user()->household->id;
+         $assetownership-> asset_id = $request->get('asset_id');
+         $assetownership-> asset_count = $request->get('asset_count');
+         
+         
+         $assetownership -> save();
+         return redirect('/home')->with('success', 'Asset ownership has been added');
     }
 
     /**
@@ -70,7 +90,21 @@ class AssetController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'asset_id' => '',
+            'asset_count' => '', 
+ 
+         ]);
+ 
+         
+         $assetownership = Assetownership::find($id);
+         $assetownership->household_id = \Auth::user()->household->id;
+         $assetownership-> asset_id = $request->get('asset_id');
+         $assetownership-> asset_count = $request->get('asset_count');
+         
+         
+         $assetownership -> save();
+         return redirect('/home')->with('success', 'Asset ownership has been added');
     }
 
     /**
