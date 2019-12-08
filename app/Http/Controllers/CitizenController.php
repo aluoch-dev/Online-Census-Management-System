@@ -25,7 +25,8 @@ class CitizenController extends Controller
      */
     public function index()
     {
-        //
+        $citizens = \App\Citizen::where('household_id',\Auth::user()->household->id)->get();
+        return view('citizen.index', compact('citizens'));
     }
 
     /**
@@ -92,14 +93,14 @@ class CitizenController extends Controller
         if($request->has('image'))
          {
             $file = $request->image;
-            $name= time().$file->getClientOriginasname();
+            $name= time().$file->getClientOriginalName();
             $file->move(public_path().'/images/uploads/', $name);
-            $product->filename= '/images/uploads/'.$name;
+            $citizen->filename= '/images/uploads/'.$name;
          }
         $citizen-> save();
         //return response()->json($citizen);
 
-        return redirect('/animal/create')->with('success', 'Citizen has been added');
+        return redirect('/citizen/index')->with('success', 'Citizen has been added');
 
 
     }
@@ -184,11 +185,11 @@ class CitizenController extends Controller
             $file = $request->image;
             $name= time().$file->getClientOriginalName();
             $file->move(public_path().'/images/uploads/', $name);
-            $product->filename= '/images/uploads/'.$name;
+            $citizen->filename= '/images/uploads/'.$name;
          }
         $citizen-> save();
 
-        return redirect('/animal/create')->with('success', 'Citizen has been added');
+        return redirect('/citizen/index')->with('success', 'Citizen has been updated');
 
     }
 
@@ -200,6 +201,13 @@ class CitizenController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $citizen = \App\citizen::find($id);
+        // $citizen->deleted = true;
+        // $citizen->save();
+        //$oldImagePath = $citizen->filename;
+        //\File::delete($oldImagePath);
+        $citizen->delete();
+
+        return redirect('/citizen/index')->with('success', 'Citizen has been deleted succesfully');
     }
 }

@@ -8,5 +8,13 @@ class Studyfield extends Model
 {
     protected $table = 'study_fields';
     
-    protected $guarded = []; 
+    protected $guarded = [];  
+
+    /**
+     * The citizens that belong to the studyfield.
+     */
+    public function citizens()
+    {
+        return $this->belongsToMany('App\Citizen'); 
+    }
 }

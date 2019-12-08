@@ -37,6 +37,9 @@ class User extends Authenticatable
     ];
 
 
+    /**
+     * Get the role record associated with the user.
+     */
     public function role()
     {
         return $this->belongsTo('App\Role');

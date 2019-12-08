@@ -12,7 +12,6 @@ class Citizen extends Model
         'mname',
         'sname',
         'gender_id',
-        'relationship_id',
         'age',
         'relationship_id',
         'field_id',
@@ -28,14 +27,63 @@ class Citizen extends Model
      */
     public function household()
     {
-        return $this->belongsTo('App\Household');
+        return $this->belongsTo('App\Household', 'household_id');
+    }
+
+    
+   /**
+     * Get the gender record associated with the user.
+     */
+   public function gender()
+    {
+        return $this->belongsTo('App\Gender');
+    }
+
+    /**
+     * Get the studyfield record associated with the user.
+     */
+    public function studyfield()
+    {
+        return $this->belongsTo('App\Studyfield', 'field_id');
+    }
+
+    /**
+     * Get the employment record associated with the user.
+     */
+    public function employmentstatus()
+    {
+        return $this->belongsTo('App\Employmentstatus', 'employment_id');
+    }
+
+    /**
+     * Get the educationlevel record associated with the user.
+     */
+    public function educationlevel()
+    {
+        return $this->belongsTo('App\EducationLevel', 'education_id');
+    }
+
+    public function disability()
+    {
+        return $this->belongsTo('App\Disability');
+    }
+
+    public function relationship()
+    {
+        return $this->belongsTo('App\Relationship');
+    }
+
+    public function incomesource()
+    {
+        return $this->belongsTo('App\Incomesource', 'occupation_id');
     }
 
     /**
     * The occupations that belong to the citizen.
     */
-   public function occupations()
+   public function occupation()
    {
-       return $this->belongsToMany('App\Occupation');
+       return $this->belongsTo('App\Occupation');
    }
+
 }

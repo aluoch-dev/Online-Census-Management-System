@@ -21,13 +21,12 @@ class Household extends Model
         'structure_id',
         'disposal_id',
     ];  
-
     /**
-    * Get the citizens for the specified household.
-    */
+     * The citizens that belong to the relationship.
+     */
     public function citizens()
     {
-        return $this->hasMany('App\Citizen');  
+        return $this->belongsToMany('App\Citizen');
     }
 
     /**

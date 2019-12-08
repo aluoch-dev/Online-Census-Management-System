@@ -74,7 +74,7 @@
                             <label for="age" class="col-md-4 col-form-label text-md-right">{{ __('Age') }}</label>
 
                             <div class="col-md-6">   
-                                <input id="age" type="number" class="form-control autocomplete @error('age') is-invalid @enderror" name="age" value="{{ old('age', $citizen->age) }}" required autocomplete="age" autofocus>
+                                <input id="age" type="number" class="form-control autocomplete @error('Age') is-invalid @enderror" name="age" value="{{ old('Age', $citizen->Age) }}" required autocomplete="age" autofocus>
                                 @error('age')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
