@@ -10,4 +10,8 @@ class AdminController extends Controller
         
         return view('admin.welcome');
     }
+
+    public function tables(){
+        return view('admin.tables');
+    }
 }

@@ -18,11 +18,26 @@
 </head>
 
 <body class="">
-  <main class="py-4">
-    @yield('content')
-  </main>
+  <div class="wrapper ">
+    @include('includes.adminsidebar')
+      
+      <div class="main-panel">
+        @include('includes.adminheader')
+          
+          @yield('content')
+          
+          @include('includes.footer')
+
+          </div>
+      </div>
+      
+    @include('includes.plugins')
+   
+  
+  
+  
   <!--   Core JS Files   -->
-<script src="{{ asset('/assets/js/core/jquery.min.js') }}"></script>
+  <script src="{{ asset('/assets/js/core/jquery.min.js') }}"></script>
   <script src="{{ asset('/assets/js/core/popper.min.js') }}"></script>
   <script src="{{ asset('/assets/js/core/bootstrap-material-design.min.js') }}"></script>
   <script src="{{ asset('/assets/js/plugins/perfect-scrollbar.jquery.min.js') }}"></script>
