@@ -53,15 +53,17 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
                   <a class="dropdown-item" href="#">Profile</a>
-                  <a class="dropdown-item" href="{{route('createEnumerator') }}">Add Enumerator</a>
-                  <div class="dropdown-divider"></div>
-                  <a class= "dropdown-item" href="{{ route('logout') }}"
-                    onclick="event.preventDefault();
-                             document.getElementById('logout-form').submit();">Log Out</a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    {{ csrf_field() }}
-                </form>
-                  
+                  <a class="dropdown-item" href="{{route('createOfficial') }}">Create Official</a>
+                  <div class="dropdown-divider"></div>                
+                    <a class="dropdown-item" href="{{ route('logout') }}"
+                      onclick="event.preventDefault();
+                              document.getElementById('logout-form').submit();">
+                              {{ __('Logout') }}
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                       @csrf
+                    </form>
                 </div>
               </li>
             </ul>
