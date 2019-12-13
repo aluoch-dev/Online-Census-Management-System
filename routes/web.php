@@ -20,6 +20,7 @@ Auth::routes();
 Route::group(['middleware' => 'auth'], function () {
 Route::get('/admin/index', 'AdminController@index')->name('admin');
 Route::get('/admin/tables', 'AdminController@tables')->name('adminTables');
+Route::get('/admin/reports', 'AdminController@reports')->name('adminReports');
 Route::get('/admin/create/enumerator', 'AdminRegistrationController@createOfficial')->name('createOfficial');
 Route::get('/enumerator/index', 'EnumeratorController@index')->name('enumerator');
 Route::get('household/create','HouseholdController@create')->name('createHousehold'); 

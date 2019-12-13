@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\User;
 use App\Role;
+use App\Notifications\NewRegistration;
 
 class RegisterController extends Controller
 {
@@ -73,5 +74,12 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+        $admin = User::where('admin', 1)->first();
+        if ($admin) {
+            $admin->notify(new NewRegistration($user));
+        }
+
+        return $user;
     }
 }

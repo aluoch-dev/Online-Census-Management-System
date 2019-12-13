@@ -14,4 +14,8 @@ class AdminController extends Controller
     public function tables(){
         return view('admin.tables');
     }
+
+    public function reports(){
+        return view('admin.reports');
+    }
 }

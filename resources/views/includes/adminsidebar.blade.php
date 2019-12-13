@@ -24,7 +24,7 @@
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="{{ route('adminTables') }}">
+            <a class="nav-link" href="{{ route('adminReports') }}">
               <i class="material-icons">content_paste</i>
               <p>Reports</p>
             </a>
