@@ -20,6 +20,7 @@ Auth::routes();
 Route::group(['middleware' => 'auth'], function () {
 Route::get('/admin/index', 'AdminController@index')->name('admin');
 Route::get('/admin/tables', 'AdminController@tables')->name('adminTables');
+Route::get('/admin/notifications', 'AdminController@notifications')->name('adminNotifications');
 Route::get('/admin/reports', 'AdminController@reports')->name('adminReports');
 Route::get('/admin/create/enumerator', 'AdminRegistrationController@createOfficial')->name('createOfficial');
 Route::get('/enumerator/index', 'EnumeratorController@index')->name('enumerator');
@@ -46,5 +47,7 @@ Route::get('asset/create', 'AssetController@create')->name('createAsset');
 Route::post('asset/store', 'AssetController@store')->name('storeAsset'); 
 Route::get('asset/edit/{asset}', 'AssetController@edit')->name('editAsset'); 
 Route::any('asset/update/{asset}', 'AssetController@update')->name('updateAsset'); 
-Route::get('/home', 'HomeController@index')->name('home'); 
+Route::get('/home', 'HomeController@index')->name('home');
+
 });
+

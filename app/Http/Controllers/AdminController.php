@@ -22,4 +22,8 @@ class AdminController extends Controller
     public function reports(){
         return view('admin.reports');
     }
+
+    public function notifications(){
+        return view('admin.notifications');
+    }
 }

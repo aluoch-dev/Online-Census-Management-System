@@ -28,27 +28,35 @@
                   </p>
                 </a>
               </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              @if(Auth::user()->role->id === 2
+								<li>
+									<a href="/admin/notifications"><i class="glyphicon glyphicon-bell notification-icon">({{$notificationItems}})</i></a>
+								</li>
+              @endif
+              <!--<li class="nav-item dropdown dropdown-notifications">
+                
+                <a class="nav-link" href="#notications-panel" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="material-icons">notifications</i>
                   <span class="notif-count">0</span>
                   <p class="d-lg-none d-md-block">
-                    Some Actions
+                    <a href="#">Mark all as read</a>
                   </p>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                <!--<div class="dropdown-container">-->
                   <div class="dropdown-toolbar">
                     <div class="dropdown-toolbar-actions">
-                      <a href="#">Mark all as read</a>
+                      <a class="dropdown-item" href="#"><b><i>Mark all as read</i></b></a>
                     </div>
-                    <h3 class="dropdown-toolbar-title">Notifications (<span class="notif-count">0</span>)</h3>
+                    <a class="dropdown-item" href="#">You have 5 new tasks</a>
+                    <a class="dropdown-item" href="#">You have 5 new tasks</a>
                   </div>
-                    <ul class="dropdown-menu">
-                    </ul>
-                <div class="dropdown-footer text-center">
-                  <a href="#">View All</a>
-              </li>
+                  <ul class="dropdown-menu">
+                  </ul>
+                  <div class="dropdown-footer text-center">
+                    <a class="dropdown-item" href="{{route('adminNotifications') }}"><b><i>View All</i></b></a>
+                  </div>
+                </div>
+              </li>-->
               <li class="nav-item dropdown">
                 <a class="nav-link" href="#pablo" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="material-icons">person</i>

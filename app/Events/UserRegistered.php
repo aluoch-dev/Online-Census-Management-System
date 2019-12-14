@@ -10,18 +10,23 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class UserRegistered
+class UserRegistered implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+
+    public $national_id; 
+
+    public $message;
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($national_id)
     {
-        //
+        $this->national_id = $national_id;
+        $this->message = " {$national_id} registered as a new user";
     }
 
     /**
@@ -31,6 +36,6 @@ class UserRegistered
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('channel-name');
+        return ['user-registered'];
     }
 }
