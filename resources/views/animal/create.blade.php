@@ -11,9 +11,12 @@
 
                 <div class="form-group row">
                             <div class="col-md-6 ">
-                                <a href="{{ route('editCitizen', $citizen->id) }}" class="btn-sm btn btn-primary">{{ __('Click Back to Update Previous Records') }}</a>
+                                <a href="{{ route('indexCitizen') }}" class="btn-sm btn btn-primary">{{ __('Update Previous Records') }}</a>
                             </div>
-            
+
+                            <div class="col-md-6 ">
+                                <a href="{{ route('animalImports') }}" class="btn-sm btn btn-primary">{{ __('Bulk Upload Animals') }}</a>
+                            </div>
                 </div>
                     
                     <form method="POST" action="{{ route('storeAnimal') }}">
@@ -44,6 +47,12 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Submit to Proceed') }}
                                 </button>
+                            </div>
+
+                            
+                            <div class="col-md-6 ">
+                                <a href="{{ route('indexAnimal') }}" class="btn-sm btn btn-primary">{{ __('Skip to tabular View') }}</a>
+                            </div>
                             </div>
 
                         </div>

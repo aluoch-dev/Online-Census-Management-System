@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Role;
 
-class RegisterController extends Controller
+class AdminRegisterController extends Controller
 {
     /*
     |--------------------------------------------------------------------------

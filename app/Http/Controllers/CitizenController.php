@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Imports\CitizensImport;
+use App\Exports\CitizensExport;
+use Maatwebsite\Excel\Facades\Excel; 
 use App\Gender;
 use App\Relationship;
 Use App\Studyfield;
@@ -104,6 +107,7 @@ class CitizenController extends Controller
 
 
     }
+
 
     /**
      * Display the specified resource.
@@ -209,5 +213,32 @@ class CitizenController extends Controller
         $citizen->delete();
 
         return redirect('/citizen/index')->with('success', 'Citizen has been deleted succesfully');
+    }
+
+    /**
+     * display import page
+     */
+    public function importview()
+    {
+        return view('citizen.import');
+    }
+
+    /**
+     * preform import function
+     */
+    public function importCitizens()
+    {
+        Excel::import(new CitizensImport,request()->file('file'));
+           
+        return back();
+    }
+
+    /**
+    * @return \Illuminate\Support\Collection
+    */
+    public function downloadCitizensTemplate() 
+    {
+        
+        return Excel::download(new CitizensImport,'citizens.xlsx');
     }
 }

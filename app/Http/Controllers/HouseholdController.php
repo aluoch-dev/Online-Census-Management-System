@@ -72,7 +72,7 @@ class HouseholdController extends Controller
          $household-> disposal_id = $request->get('disposal_id');
  
         //check if household exists
-        $household = Household::firstOrCreate(['user_id'=>\Auth::user()->id]);
+        $household = Household::firstOrNew(['user_id'=>\Auth::user()->id]);
         $household->save();
          
          //return response()->json($household);

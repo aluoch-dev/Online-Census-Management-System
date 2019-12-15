@@ -68,7 +68,7 @@
             </div>
 
             <div class="col-md-4 ">
-                <a href="" class="btn-sm btn btn-primary">{{ __('Bulk Upload Members') }}</a>
+                <a href="{{ route('citizenImports') }}" class="btn-sm btn btn-primary">{{ __('Bulk Upload Members') }}</a>
             </div>
 
             <div class="col-md-4 ">

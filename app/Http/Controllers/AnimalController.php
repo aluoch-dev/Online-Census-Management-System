@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Imports\CitizensImport;
+use Maatwebsite\Excel\Facades\Excel; 
 use App\Animal;
 use App\Animalownership;
 use App\Household;
@@ -19,7 +21,7 @@ class AnimalController extends Controller
      */
     public function index()
     {
-        //
+        return view('animal.index');
     }
 
     /**
@@ -57,7 +59,7 @@ class AnimalController extends Controller
          
          
          $animalownership -> save();
-         return redirect('/asset/create')->with('success', 'Animal ownership has been added');
+         return redirect('/animal/index')->with('success', 'Animal ownership has been added');
     }
 
     /**
@@ -102,7 +104,7 @@ class AnimalController extends Controller
          $animalownership-> animal_count = $request->get('animal_count');
          
          $animalownership -> save();
-         return redirect('/asset/create')->with('success', 'Animal ownership has been updated');
+         return redirect('/animal/index')->with('success', 'Animal ownership has been updated');
     }
 
     /**
@@ -115,6 +117,25 @@ class AnimalController extends Controller
     {
         $animalownership = animalownership::find($id);
         $animalownership->delete();
-        return redirect('/asset/create')->with('success', 'Animal_ownership has been deleted Successfully');
+        return redirect('/animal/index')->with('success', 'Animal_ownership has been deleted Successfully');
+    }
+
+    
+    /**
+     * display import page
+     */
+    public function importview()
+    {
+        return view('animal.import');
+    }
+
+    /**
+     * preform import function
+     */
+    public function importAnimals()
+    {
+        Excel::import(new AnimalsImport,request()->file('file'));
+           
+        return back();
     }
 }

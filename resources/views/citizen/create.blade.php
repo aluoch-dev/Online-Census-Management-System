@@ -9,11 +9,21 @@
 
                 <div class="card-body">
                         <div class="form-group row">
-                            <div class="col-md-6 ">
-                                <a href="{{ route('editHousehold', $household->id) }}" class="btn-sm btn btn-primary">{{ __('Click Back to Update Previous Records') }}</a>
+                            <div class="col-md-4 ">
+                                <a href="{{ route('editHousehold', $household->id) }}" class="btn-sm btn btn-primary">{{ __('Update Previous Records') }}</a>
+                            </div>
+
+                            <div class="col-md-4 ">
+                                <a href="{{ route('citizenImports') }}" class="btn-sm btn btn-primary">{{ __('Upload Citizens from Excel File') }}</a>
+                            </div>
+
+                            <div class="col-md-4 ">
+                                <a href="{{ route('indexCitizen') }}" class="btn-sm btn btn-primary">{{ __('Proceed to tabular view') }}</a>
                             </div>
             
+            
                         </div>
+
                 </div>
 
                     <form method="POST" action="{{ route('storeCitizen') }}" enctype="multipart/form-data" >
