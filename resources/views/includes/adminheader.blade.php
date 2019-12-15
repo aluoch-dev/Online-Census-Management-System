@@ -28,11 +28,9 @@
                   </p>
                 </a>
               </li>
-              @if(Auth::user()->role->id === 2
 								<li>
-									<a href="/admin/notifications"><i class="glyphicon glyphicon-bell notification-icon">({{$notificationItems}})</i></a>
+									<a href="/admin/notifications"><i class="glyphicon glyphicon-bell notification-icon"></i></a>
 								</li>
-              @endif
               <!--<li class="nav-item dropdown dropdown-notifications">
                 
                 <a class="nav-link" href="#notications-panel" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

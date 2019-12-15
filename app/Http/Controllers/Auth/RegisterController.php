@@ -67,8 +67,7 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
 
-        $admin= App\User::whereRole_id(2)->first();
-        $admin->notify(new UserRegistered());
+        
         
         $role_id  = Role::where('id', $data['role_id'])->first();
 
@@ -77,5 +76,8 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+        //$admin= App\User::whereRole_id(2)->first();
+        //$admin->notify(new UserRegistered());
     }
 }

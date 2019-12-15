@@ -4,7 +4,17 @@
 @section('content')
 <div class="content">
         <div class="container-fluid">
-          
+        <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">Registered Users</div>
+
+                <div class="panel-body">
+                {!! $chart->container() !!}
+                </div>
+            </div>
+        </div>
+    </div> 
           <div class="row">
             <div class="col-lg-6 col-md-12">
               <div class="card">
@@ -63,4 +73,6 @@
           </div>
         </div>
       </div>
+
+    {!! $chart->script() !!}
 @endsection

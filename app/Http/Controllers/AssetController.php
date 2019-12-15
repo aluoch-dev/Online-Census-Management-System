@@ -18,7 +18,7 @@ class AssetController extends Controller
      */
     public function index()
     {
-        //
+        return view('asset.index');
     }
 
     /**
@@ -56,7 +56,7 @@ class AssetController extends Controller
          
          
          $assetownership -> save();
-         return redirect('/home')->with('success', 'Asset ownership has been added');
+         return redirect('/asset/index')->with('success', 'Asset ownership has been added');
     }
 
     /**
@@ -104,7 +104,7 @@ class AssetController extends Controller
          
          
          $assetownership -> save();
-         return redirect('/home')->with('success', 'Asset ownership has been added');
+         return redirect('/asset/index')->with('success', 'Asset ownership has been added');
     }
 
     /**
