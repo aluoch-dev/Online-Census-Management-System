@@ -4,17 +4,48 @@
 @section('content')
 <div class="content">
         <div class="container-fluid">
-        <div class="row">
-        <div class="col-md-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">Registered Users</div>
+          <div class="row">
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Daily User Registration Comparisson</div>
 
-                <div class="panel-body">
-                {!! $chart->container() !!}
+                    <div class="panel-body">
+                      {!! $chart->container() !!}
+                    </div>
                 </div>
             </div>
+            <div class="col-md-6">
+              <div class="panel panel-default">
+                  <div class="panel-heading">Comparisson based on Gender</div>
+
+                  <div class="panel-body">
+                  {!! $genderchart->container() !!}
+                  </div>
+              </div>
+          </div>
         </div>
-    </div> 
+
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Employment Rates Charts</div>
+
+                    <div class="panel-body">
+                      {!! $employmentchart->container() !!}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+              <div class="panel panel-default">
+                  <div class="panel-heading">Comparisson based on Ages</div>
+
+                  <div class="panel-body">
+                  {!! $agegroupchart->container() !!}
+                  </div>
+              </div>
+          </div>
+        </div> 
           <div class="row">
             <div class="col-lg-6 col-md-12">
               <div class="card">
@@ -75,4 +106,7 @@
       </div>
 
     {!! $chart->script() !!}
+    {!! $genderchart->script() !!}
+    {!! $employmentchart->script() !!}
+    {!! $agegroupchart->script() !!}
 @endsection

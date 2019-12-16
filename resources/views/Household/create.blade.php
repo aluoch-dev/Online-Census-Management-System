@@ -136,7 +136,7 @@
                             <label for="deathcounts" class="col-md-4 col-form-label text-md-right">{{ __('Death Counts ') }}</label>
 
                             <div class="col-md-6">
-                                <select id="deathcounts" type="number" class="form-control autocomplete @error('deathcounts') is-invalid @enderror" name="deathcounts" required autocomplete="type of structure">
+                                <input id="deathcounts" type="number" class="form-control autocomplete @error('deathcounts') is-invalid @enderror" name="deathcounts" required autocomplete="type of structure">
                                 @error('structure_id')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
