@@ -4,12 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class State extends Model
+class Cooking extends Model
 {
-    protected $guarded=[];
+    protected $table = 'amenities';
+    
+    protected $guarded = []; 
 
     /**
-     * Get the households for the state.
+     * Get the households for the cooking means.
      */
     public function households()
     {

@@ -24,6 +24,7 @@ Route::get('/admin/notifications', 'AdminController@notifications')->name('admin
 Route::get('/admin/reports', 'AdminController@reports')->name('adminReports');
 Route::get('/admin/create/enumerator', 'AdminRegistrationController@createOfficial')->name('createOfficial');
 Route::get('/enumerator/index', 'EnumeratorController@index')->name('enumerator');
+Route::get('household/index', 'HouseholdController@index')->name('indexHousehold');
 Route::get('household/create','HouseholdController@create')->name('createHousehold'); 
 Route::post('getstates','HouseholdController@getStates')->name('getStates');
 Route::post('getcounties','HouseholdController@getCounties')->name('getCounties');
@@ -50,11 +51,17 @@ Route::post('animal/import/animal', 'AnimalController@importAnimals')->name('imp
 Route::get('animal/edit/{animal}', 'AnimalController@edit')->name('editAnimal');
 Route::any('animal/update/{animal}', 'AnimalController@update')->name('updateAnimal');
 Route::any('animal/index', 'AnimalController@index')->name('indexAnimal');
+Route::delete('animal/destroy/{animal}', 'AnimalController@destroy')->name('destroyAnimal');
+Route::get('asset/index', 'AssetController@index')->name('indexAsset');
 Route::get('asset/create', 'AssetController@create')->name('createAsset');
 Route::post('asset/store', 'AssetController@store')->name('storeAsset'); 
+Route::get('asset/import', 'AssetController@importview')->name('assetImports');
+Route::post('/asset/download/template', 'AssetController@downloadTemplate')->name('downloadAssetTemplate');
+Route::post('asset/import/asset', 'AssetController@importAnimals')->name('importAssets');
 Route::get('asset/edit/{asset}', 'AssetController@edit')->name('editAsset'); 
 Route::any('asset/update/{asset}', 'AssetController@update')->name('updateAsset'); 
+Route::delete('asset/destroy/{asset}', 'AssetController@destroy')->name('destroyAsset');
 Route::get('/home', 'HomeController@index')->name('home');
-
+Route::get('enumeration/report','HomeController@enumeration')->name('enumerationReport');
 });
 

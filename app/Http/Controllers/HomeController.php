@@ -25,4 +25,13 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function enumeration()
+    {
+        $households = \App\Household::where('user_id',\Auth::user()->id)->get();
+        $citizens = \App\Citizen::where('household_id',\Auth::user()->household->id)->get();
+        $animalownerships = \App\Animalownership::where('household_id',\Auth::user()->household->id)->get();
+        $assetownerships = \App\Assetownership::where('household_id',\Auth::user()->household->id)->get();
+        return view('enumeration', get_defined_vars());
+    }
 }

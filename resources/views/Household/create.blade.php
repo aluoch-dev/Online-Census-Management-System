@@ -132,6 +132,19 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label for="deathcounts" class="col-md-4 col-form-label text-md-right">{{ __('Death Counts ') }}</label>
+
+                            <div class="col-md-6">
+                                <select id="deathcounts" type="number" class="form-control autocomplete @error('deathcounts') is-invalid @enderror" name="deathcounts" required autocomplete="type of structure">
+                                @error('structure_id')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

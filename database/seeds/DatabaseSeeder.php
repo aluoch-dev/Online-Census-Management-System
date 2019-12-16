@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
             StudiesTableSeeder::class,
             EmploymentsTableSeeder::class,
             OccupationsTableSeeder::class,
+            HousesTableSeeder::class,
         ]);
     }
 }

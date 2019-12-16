@@ -23,7 +23,6 @@ class CreateCitizensTable extends Migration
             $table->bigInteger('gender_id')->unsigned();
             $table->foreign('gender_id')->references('id')->on('genders');
             $table->bigInteger('Age');
-            $table->string('filename')->nullable();
             $table->bigInteger('relationship_id')->unsigned()->nullable()->default(5);
             $table->foreign('relationship_id')->references('id')->on('relationships');
             $table->bigInteger('education_id')->unsigned()->nullable()->default(4);

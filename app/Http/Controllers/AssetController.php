@@ -18,7 +18,8 @@ class AssetController extends Controller
      */
     public function index()
     {
-        return view('asset.index');
+        $assetownerships = \App\Assetownership::where('household_id',\Auth::user()->household->id)->get();
+        return view('asset.index', compact('assetownerships'));
     }
 
     /**

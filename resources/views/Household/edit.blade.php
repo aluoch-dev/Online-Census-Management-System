@@ -16,7 +16,7 @@
                             <label for="state_id" class="col-md-4 col-form-label text-md-right">{{ __('State') }}</label>
 
                             <div class="col-md-6">   
-                                <select id="state_id" type="text" class="form-control autocomplete @error('state_id') is-invalid @enderror" name="state_id" value="{{ old('state_id') }}" required autocomplete="state_id" autofocus>
+                                <select id="state_id" type="text" class="form-control autocomplete @error('state_id') is-invalid @enderror" name="state_id" value="{{ old('state_id', $household->state_id) }}" required autocomplete="state_id" autofocus>
                                 @foreach ($states as $state) 
                                     <option value="{{$state->id}}">{{$state->state}}</option>
                                 @endforeach
@@ -33,7 +33,7 @@
                             <label for="county_id" class="col-md-4 col-form-label text-md-right">{{ __('County') }}</label>
 
                             <div class="col-md-6">   
-                                <select id="county_id" type="text" class="form-control autocomplete @error('county_id') is-invalid @enderror" name="county_id" value="{{ old('county_id') }}" required autocomplete="county_id" autofocus>
+                                <select id="county_id" type="text" class="form-control autocomplete @error('county_id') is-invalid @enderror" name="county_id" value="{{ old('state_id', $household->county_id) }}" required autocomplete="county_id" autofocus>
                                 @foreach ($counties as $county) 
                                     <option value="{{$county->id}}">{{$county->county_name}}</option>
                                 @endforeach
@@ -50,7 +50,7 @@
                             <label for="subcounty_id" class="col-md-4 col-form-label text-md-right">{{ __('SubCounty') }}</label>
 
                             <div class="col-md-6">
-                                <select id="subcounty_id" type="text" class="form-control  autocomplete @error('subcounty_id') is-invalid @enderror" name="subcounty_id" value="{{ old('subcounty_id') }}" required autocomplete="subcounty">
+                                <select id="subcounty_id" type="text" class="form-control  autocomplete @error('subcounty_id') is-invalid @enderror" name="subcounty_id" value="{{ old('subcounty_id', $household->subcounty_id) }}" required autocomplete="subcounty">
                                 @foreach ($subcounties as $subcounty) 
                                     <option value="{{$subcounty->id}}">{{$subcounty->subcounty_name}}</option>
                                 @endforeach
@@ -68,7 +68,7 @@
                             <label for="school_id" class="col-md-4 col-form-label text-md-right">{{ __('Nearby School') }}</label>
 
                             <div class="col-md-6">
-                                <select id="school_id" type="text" class="form-control autocomplete @error('school_id') is-invalid @enderror" name="school_id" required autocomplete="school">
+                                <select id="school_id" type="text" class="form-control autocomplete @error('school_id') is-invalid @enderror" value="{{ old('school_id', $household->school_id) }}" name="school_id" required autocomplete="school">
                                 @foreach ($schools as $school) 
                                     <option value="{{$school->id}}">{{$school->school_name}}</option>
                                 @endforeach
@@ -86,7 +86,7 @@
                             <label for="cookingmeans_id" class="col-md-4 col-form-label text-md-right">{{ __('Cooking Means') }}</label>
 
                             <div class="col-md-6">
-                                <select id="cookingmeans_id" type="text" class="form-control autocomplete @error('cookingmeans_id') is-invalid @enderror" name="cookingmeans_id" required autocomplete="cooking means">
+                                <select id="cookingmeans_id" type="text" class="form-control autocomplete @error('cookingmeans_id') is-invalid @enderror" name="cookingmeans_id" value="{{ old('cookingmeans_id', $household->cookingmeans_id) }}" required autocomplete="cooking means">
                                 @foreach ($amenities as $amenity) 
                                     <option value="{{$amenity->id}}">{{$amenity->amenity}}</option>
                                 @endforeach
@@ -120,7 +120,7 @@
                             <label for="disposal_id" class="col-md-4 col-form-label text-md-right">{{ __('Waste Disposal ') }}</label>
 
                             <div class="col-md-6">
-                                <select id="disposal_id" type="text" class="form-control autocomplete @error('disposal_id') is-invalid @enderror" name="disposal_id" required autocomplete="type of structure">
+                                <select id="disposal_id" type="text" class="form-control autocomplete @error('disposal_id') is-invalid @enderror" name="disposal_id" value="{{ old('disposal_id', $household->disposal_id) }}" required autocomplete="type of structure">
                                 @foreach ($amenities as $amenity) 
                                     <option value="{{$amenity->id}}">{{$amenity->amenity}}</option>
                                 @endforeach
@@ -132,6 +132,21 @@
                                 @enderror
                             </div>
                         </div>
+
+                        <div class="form-group row">
+                            <label for="deathcounts" class="col-md-4 col-form-label text-md-right">{{ __('Death Counts') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="deathcounts" type="text" class="form-control autocomplete @error('deathcounts') is-invalid @enderror" name="deathcounts" value="{{ old('deathcounts', $household->deathcounts) }}" required autocomplete="type of structure">
+                                
+                                @error('deathcounts')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">

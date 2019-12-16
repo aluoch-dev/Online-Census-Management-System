@@ -75,7 +75,6 @@ class CitizenController extends Controller
             'education_id' =>'',
             'employment_id' =>'',
             'occupation_id' =>'',
-            'image' => 'sometimes|mimes:jpg,jpeg,png'
 
         ]);
 
@@ -93,13 +92,6 @@ class CitizenController extends Controller
         $citizen->employment_id=$request->get('employment_id');
         $citizen->occupation_id= $request->get('occupation_id');
         $citizen->income_source= $request->get('income_source');
-        if($request->has('image'))
-         {
-            $file = $request->image;
-            $name= time().$file->getClientOriginalName();
-            $file->move(public_path().'/images/uploads/', $name);
-            $citizen->filename= '/images/uploads/'.$name;
-         }
         $citizen-> save();
         //return response()->json($citizen);
 
@@ -166,7 +158,6 @@ class CitizenController extends Controller
             'education_id' =>'required',
             'employment_id' =>'required',
             'occupation_id' =>'required',
-            'image' => 'sometimes|mimes:jpg,jpeg,png'
 
         ]);
 
@@ -184,13 +175,6 @@ class CitizenController extends Controller
         $citizen->employment_id = $request->get('employment_id');
         $citizen->occupation_id = $request->get('occupation_id');
         $citizen->income_source = $request->get('income_source');
-        if($request->has('image'))
-         {
-            $file = $request->image;
-            $name= time().$file->getClientOriginalName();
-            $file->move(public_path().'/images/uploads/', $name);
-            $citizen->filename= '/images/uploads/'.$name;
-         }
         $citizen-> save();
 
         return redirect('/citizen/index')->with('success', 'Citizen has been updated');
@@ -206,10 +190,6 @@ class CitizenController extends Controller
     public function destroy($id)
     {
         $citizen = \App\citizen::find($id);
-        // $citizen->deleted = true;
-        // $citizen->save();
-        //$oldImagePath = $citizen->filename;
-        //\File::delete($oldImagePath);
         $citizen->delete();
 
         return redirect('/citizen/index')->with('success', 'Citizen has been deleted succesfully');

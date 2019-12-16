@@ -22,8 +22,7 @@
                 <th>Employment Status</th>
                 <th>Occupation</th>
                 <th>Income Source</th>
-                <th>Image</th>
-                <th colspan="2">Manage Members</th>
+                <th colspan="2">Manage Household Members</th>
             </tr>
         </thead>
         <tbody>
@@ -42,7 +41,6 @@
                 <td>{{$citizen->employmentstatus->employment_status }}</td>
                 <td>{{$citizen->occupation->occupation }}</td>
                 <td>{{$citizen->incomesource->occupation }}</td>
-                <td>{{$citizen->image }}</td>
                 <td>
                     <div class='col-md-6'>
                         <a href="{{route('editCitizen', $citizen->id)}}" class="btn-sm btn btn-warning">Edit</a>
@@ -72,7 +70,7 @@
             </div>
 
             <div class="col-md-4 ">
-                <a href="{{ route('createAnimal') }}" class="btn-sm btn btn-primary">{{ __('Proceed to Animal Ownership') }}</a>
+                <a href="{{ route('indexAnimal') }}" class="btn-sm btn btn-primary">{{ __('Proceed to Animal Ownership') }}</a>
             </div>
             
         </div>

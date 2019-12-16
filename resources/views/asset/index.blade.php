@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-      <div class="container centered" id="content">
+      <div class="container"  id="content">
         <br />
 
        @include('includes.message')
@@ -17,19 +17,19 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($animalownerships as $animalownership)
+            @foreach($assetownerships as $assetownership)
             <tr> 
                 <td></td>   
-                <td>{{$animalownership->animal->animal }}</td>
-                <td>{{$animalownership->animal_count }}</td>
+                <td>{{$assetownership->asset->asset }}</td>
+                <td>{{$assetownership->asset_count }}</td>
                 <td>
                     <div class='col-md-6'>
-                        <a href="{{route('editAnimal', $animalownership->id)}}" class="btn-sm btn btn-warning">Edit</a>
+                        <a href="{{route('editAsset', $assetownership->id)}}" class="btn-sm btn btn-warning">Edit</a>
                     </div>
                 </td>
                 <td>
                     <div class='col-md-6'>
-                        <form action="{{route('destroyAnimal', $animalownership->id)}}" method="post">
+                        <form action="{{route('destroyAsset', $assetownership->id)}}" method="post">
                             @csrf @method('delete')
                             <button class="btn btn-danger btn-sm " type="submit">Delete</button>
                         </form>
@@ -43,15 +43,15 @@
     <div class="card-body">
         <div class="form-group row">
             <div class="col-md-4 ">
-                <a href="{{ route('createAnimal') }}" class="btn-sm btn btn-primary">{{ __('Add more animals') }}</a>
+                <a href="{{ route('createAsset') }}" class="btn-sm btn btn-primary">{{ __('Add more Assets') }}</a>
             </div>
 
             <div class="col-md-4 ">
-                <a href="{{ route('animalImports') }}" class="btn-sm btn btn-primary">{{ __('Bulk Upload Animals') }}</a>
+                <a href="{{ route('assetImports') }}" class="btn-sm btn btn-primary">{{ __('Bulk Upload Assets') }}</a>
             </div>
 
             <div class="col-md-4 ">
-                <a href="{{ route('indexAsset') }}" class="btn-sm btn btn-primary">{{ __('Proceed to Asset Ownership') }}</a>
+                <a href="{{ route('home') }}" class="btn-sm btn btn-primary">{{ __('Proceed') }}</a>
             </div>
             
         </div>

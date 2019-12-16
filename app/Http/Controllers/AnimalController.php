@@ -21,7 +21,8 @@ class AnimalController extends Controller
      */
     public function index()
     {
-        return view('animal.index');
+        $animalownerships = \App\Animalownership::where('household_id',\Auth::user()->household->id)->get();
+        return view('animal.index', compact('animalownerships'));
     }
 
     /**

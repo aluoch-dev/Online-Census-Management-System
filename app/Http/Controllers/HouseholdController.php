@@ -21,7 +21,8 @@ class HouseholdController extends Controller
      */
     public function index()
     {
-        //
+        $households = \App\Household::where('user_id',\Auth::user()->id)->get();
+        return view('household.index', get_defined_vars());
     }
 
     /**
@@ -57,7 +58,8 @@ class HouseholdController extends Controller
             'school_id' => 'required',
             'cookingmeans_id' => 'required',
             'structure_id' =>'required',
-            'disposal_id' =>'required'
+            'disposal_id' =>'required',
+            'deathcounts' =>'required'
  
          ]);
 
@@ -70,22 +72,12 @@ class HouseholdController extends Controller
          $household-> cookingmeans_id = $request->get('cookingmeans_id');
          $household-> structure_id = $request->get('structure_id');
          $household-> disposal_id = $request->get('disposal_id');
+         $household-> deathcounts = $request->get('deathcounts');
  
         //check if household exists
-        $household = Household::firstOrNew(['user_id'=>\Auth::user()->id]);
+        //$household = Household::firstOrNew(['user_id'=>\Auth::user()->id]);
         $household->save();
-         
-         //return response()->json($household);
-        
-
-        if($household->wasRecentlyCreated){
-          echo 'Created successfully';
-          return redirect('/citizen/create')->with('success', 'Household created succesfully');
-        } else {
-            echo 'Already exist';
-            return redirect('/citizen/create')->with('success', 'Household already exists');
-       }
-        
+        return redirect('/household/index')->with('success', 'Household created succesfully'); 
          
     }
 
@@ -137,7 +129,8 @@ class HouseholdController extends Controller
             'school_id' => 'required',
             'cookingmeans_id' => 'required',
             'structure_id' =>'required',
-            'disposal_id' =>'required'
+            'disposal_id' =>'required',
+            'deathcounts' =>'required'
  
          ]);
  
@@ -148,9 +141,10 @@ class HouseholdController extends Controller
          $household->cookingmeans_id = $request->get('cookingmeans_id');
          $household->structure_id = $request->get('structure_id');
          $household->disposal_id = $request->get('disposal_id');
+         $household->deathcounts = $request->get('deathcounts');
          $household->save();
     
-        return redirect('/citizen/create')->with('success', 'Details have been updated');
+        return redirect('/household/index')->with('success', 'Details have been updated');
     }
 
     /**
@@ -163,7 +157,7 @@ class HouseholdController extends Controller
     {
         $household = household::find($id);
         $household->delete();
-        return redirect('/citizen/create')->with('success', 'household has been deleted Successfully');
+        return redirect('/household/index')->with('success', 'household has been deleted Successfully');
     }
 
     /**

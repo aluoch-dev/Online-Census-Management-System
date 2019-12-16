@@ -224,20 +224,6 @@
                         </div>
 
                         <div class="form-group row">
-                                <label for="image" class="col-md-4 col-form-label text-md-right">{{ __('Upload image') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="image" type="file" class="form-control{{ $errors->has('image') ? ' is-invalid' : '' }}" name="image">
-
-                                    @if ($errors->has('image'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('image') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                        </div>
-
-                        <div class="form-group row">
                         <div class="col-md-6 ">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Submit to Proceed') }}

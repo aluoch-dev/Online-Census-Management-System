@@ -45,7 +45,6 @@
                                     {{ __('Submit to Proceed') }}
                                 </button>
                             </div>
-
                         </div>
 
                     </form>
