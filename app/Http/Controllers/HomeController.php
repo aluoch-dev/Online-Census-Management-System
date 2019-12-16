@@ -28,6 +28,7 @@ class HomeController extends Controller
 
     public function enumeration()
     {
+        $user = \App\User::where('national_id',\Auth::user()->national_id)->firstOrFail();
         $households = \App\Household::where('user_id',\Auth::user()->id)->get();
         $citizens = \App\Citizen::where('household_id',\Auth::user()->household->id)->get();
         $animalownerships = \App\Animalownership::where('household_id',\Auth::user()->household->id)->get();

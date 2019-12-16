@@ -21,7 +21,14 @@ Route::group(['middleware' => 'auth'], function () {
 Route::get('/admin/index', 'AdminController@index')->name('admin');
 Route::get('/admin/tables', 'AdminController@tables')->name('adminTables');
 Route::get('/admin/notifications', 'AdminController@notifications')->name('adminNotifications');
+Route::get('/admin/charts', 'AdminController@charts')->name('adminCharts');
 Route::get('/admin/reports', 'AdminController@reports')->name('adminReports');
+Route::get('/admin/dailyCitizens', 'ReportController@dailyCitizen')->name('dailyCitizen');
+Route::get('/admin/weeklyCitizens', 'ReportController@weeklyCitizen')->name('weeklyCitizen');
+Route::get('/all/enumeration', 'ReportController@enumeration')->name('allEnumeration');
+Route::get('/all/users', 'ReportController@users')->name('allUsers');
+Route::get('/admin/dailyRegistration', 'ReportController@dailyRegistration')->name('dailyRegistration');
+Route::get('/admin/weeklyRegistration', 'ReportController@weeklyRegistration')->name('weeklyRegistration');
 Route::get('/admin/create/enumerator', 'AdminRegistrationController@createOfficial')->name('createOfficial');
 Route::get('/enumerator/index', 'EnumeratorController@index')->name('enumerator');
 Route::get('household/index', 'HouseholdController@index')->name('indexHousehold');
@@ -65,3 +72,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('enumeration/report','HomeController@enumeration')->name('enumerationReport');
 });
 
+//setting the home page to prevent backhistory after log out
+Route::group(['middleware' => 'auth', 'PreventBackHistory'],function(){
+    Route::get('/', function () {
+        return view('welcome');   
+    });
+});

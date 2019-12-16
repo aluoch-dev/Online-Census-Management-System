@@ -5,6 +5,9 @@
         <br />
 
         @include('includes.message')
+        <h3>Your enumeration for this year is <b>KNBS {{$user->national_id}} @php $time = Carbon\Carbon::today();
+              echo $time->toDateString();
+              @endphp</b> </h3>
         <div class="row">
             <table class="table table-responsive table-striped">
                 <thead>
@@ -182,6 +185,12 @@
                 
             </div>
         </div>
-
 </div>
+
+<div class="clearfix"></div>
+
+            <div align="center">
+                <button onclick="history.back()" target="_blank" class="btn btn-primary"><i class="fa fa-backward"></i> Back</button>
+                <button onclick="genPDF()" target="_blank" class="btn btn-primary"><i class="fa fa-print"></i> Print</button>
+            </div>
 @endsection

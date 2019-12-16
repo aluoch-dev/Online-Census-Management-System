@@ -18,27 +18,16 @@
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="{{ route('adminTables') }}">
-              <i class="material-icons">content_paste</i>
-              <p>Table List</p>
-            </a>
-          </li>
-          <li class="nav-item ">
             <a class="nav-link" href="{{ route('adminReports') }}">
               <i class="material-icons">content_paste</i>
-              <p>Reports</p>
+              <p>Data Reports</p>
             </a>
           </li>
+          
           <li class="nav-item ">
-            <a class="nav-link" href="./icons.html">
-              <i class="material-icons">bubble_chart</i>
-              <p>Icons</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./map.html">
+            <a class="nav-link" href="{{route('adminCharts') }}">
               <i class="material-icons">location_ons</i>
-              <p>Maps</p>
+              <p>Charts</p>
             </a>
           </li>
           <li class="nav-item ">

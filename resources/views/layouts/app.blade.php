@@ -81,6 +81,28 @@
         <main class="py-4">
             @yield('content')
         </main>
-    </div>  
+    </div> 
+
+    <!-- print scripts-->
+<script src="/js/html2canvas.js"></script>
+<script src="/js/jquery-3.3.1.min.js"></script>
+<script src="/js/jspdf.min.js"></script>
+
+<script>
+  function genPDF()
+  {
+   html2canvas(document.getElementById('content'),{
+   onrendered:function(canvas){
+
+    var img=canvas.toDataURL("image/png");
+    var doc = new jsPDF();
+    doc.addImage(img,'JPEG',40,20);
+    // doc.save('receipt.pdf');
+    window.open(doc.output('bloburl'), '_blank');
+    }
+
+    });
+}
+ </script> 
 </body>
 </html>

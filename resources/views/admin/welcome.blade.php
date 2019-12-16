@@ -6,8 +6,9 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-6">
+            <h3><b>DAILY REGISTRATION COMPARRISON CHART</b></h3>
                 <div class="panel panel-default">
-                    <div class="panel-heading">Daily User Registration Comparisson</div>
+                    <div class="panel-heading"></div>
 
                     <div class="panel-body">
                       {!! $chart->container() !!}
@@ -15,8 +16,9 @@
                 </div>
             </div>
             <div class="col-md-6">
+            <h3><b>GENDER COMPARRISON CHART</b></h3>
               <div class="panel panel-default">
-                  <div class="panel-heading">Comparisson based on Gender</div>
+                  <div class="panel-heading"></div>
 
                   <div class="panel-body">
                   {!! $genderchart->container() !!}
@@ -28,8 +30,9 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-6">
+            <h3><b>EMPLOYMENT RATES CHART</b></h3>
                 <div class="panel panel-default">
-                    <div class="panel-heading">Employment Rates Charts</div>
+                    <div class="panel-heading"></div>
 
                     <div class="panel-body">
                       {!! $employmentchart->container() !!}
@@ -37,8 +40,9 @@
                 </div>
             </div>
             <div class="col-md-6">
+            <h3><b>AGE COMPARRISON CHART</b></h3>
               <div class="panel panel-default">
-                  <div class="panel-heading">Comparisson based on Ages</div>
+                  <div class="panel-heading"></div>
 
                   <div class="panel-body">
                   {!! $agegroupchart->container() !!}
@@ -50,7 +54,7 @@
             <div class="col-lg-6 col-md-12">
               <div class="card">
                 <div class="card-header card-header-warning">
-                  <h4 class="card-title">Administrators</h4>
+                  <h4 class="card-title"><b>Administrators</b></h4>
                 </div>
                 <div class="card-body table-responsive">
                   <table class="table table-hover">
@@ -77,7 +81,7 @@
             <div class="col-lg-6 col-md-12">
               <div class="card">
                 <div class="card-header card-header-warning">
-                  <h4 class="card-title">Enumerators</h4>
+                  <h4 class="card-title"><b>Enumerators</b></h4>
                 </div>
                 <div class="card-body table-responsive">
                   <table class="table table-hover">

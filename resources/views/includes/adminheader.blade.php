@@ -10,15 +10,6 @@
             <span class="navbar-toggler-icon icon-bar"></span>
           </button>
           <div class="collapse navbar-collapse justify-content-end">
-            <form class="navbar-form">
-              <div class="input-group no-border">
-                <input type="text" value="" class="form-control" placeholder="Search...">
-                <button type="submit" class="btn btn-white btn-round btn-just-icon">
-                  <i class="material-icons">search</i>
-                  <div class="ripple-container"></div>
-                </button>
-              </div>
-            </form>
             <ul class="navbar-nav">
               <li class="nav-item">
                 <a class="nav-link" href="#pablo">
@@ -28,33 +19,12 @@
                   </p>
                 </a>
               </li>
-								<li>
-									<a href="/admin/notifications"><i class="glyphicon glyphicon-bell notification-icon"></i></a>
-								</li>
-              <!--<li class="nav-item dropdown dropdown-notifications">
-                
-                <a class="nav-link" href="#notications-panel" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="material-icons">notifications</i>
-                  <span class="notif-count">0</span>
-                  <p class="d-lg-none d-md-block">
-                    <a href="#">Mark all as read</a>
-                  </p>
+              <li class="nav-item">
+                <a href="{{ route('adminNotifications') }}" class="nav-link" data-toggle="dropdown">
+                  <i data-count="0" class="glyphicon glyphicon-bell notification-icon"></i>
+                  <span class="glyphicon glyphicon-bell notification-icon notif-count">0</span>
                 </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                  <div class="dropdown-toolbar">
-                    <div class="dropdown-toolbar-actions">
-                      <a class="dropdown-item" href="#"><b><i>Mark all as read</i></b></a>
-                    </div>
-                    <a class="dropdown-item" href="#">You have 5 new tasks</a>
-                    <a class="dropdown-item" href="#">You have 5 new tasks</a>
-                  </div>
-                  <ul class="dropdown-menu">
-                  </ul>
-                  <div class="dropdown-footer text-center">
-                    <a class="dropdown-item" href="{{route('adminNotifications') }}"><b><i>View All</i></b></a>
-                  </div>
-                </div>
-              </li>-->
+              </li>
               <li class="nav-item dropdown">
                 <a class="nav-link" href="#pablo" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="material-icons">person</i>
