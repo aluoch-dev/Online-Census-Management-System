@@ -108,7 +108,6 @@
           </div>
         </div>
       </div>
-
     {!! $chart->script() !!}
     {!! $genderchart->script() !!}
     {!! $employmentchart->script() !!}

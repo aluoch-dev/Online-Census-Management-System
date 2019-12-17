@@ -7,8 +7,8 @@
             <div class="col-md-12">
               <div class="card">
                 <div class="card-header card-header-primary">
-                  <h4 class="card-title">Weekly Citizen Registration</h4>
-                  <p class="card-category"> Citizens Registered This Week</p>
+                  <h4 class="card-title">Daily Citizen Registration</h4>
+                  <p class="card-category"> Citizens Registered Today </p>
                 </div>
                 <div class="card-body">
                   <div class="table-responsive">
