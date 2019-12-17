@@ -52,18 +52,18 @@ class HouseholdController extends Controller
     {
         
       $request->validate([
-            'state_id' => 'required',
-            'county_id' => 'required',
-            'subcounty_id' => 'required',
-            'school_id' => 'required',
-            'cookingmeans_id' => 'required',
-            'structure_id' =>'required',
-            'disposal_id' =>'required',
-            'deathcounts' =>'required'
+            'state_id' => 'bail|required',
+            'county_id' => 'bail|required',
+            'subcounty_id' => 'bail|required',
+            'school_id' => 'bail|required',
+            'cookingmeans_id' => 'bail|required',
+            'structure_id' =>'bail|required',
+            'disposal_id' =>'bail|required',
+            'deathcounts' =>'bail|required'
  
          ]);
 
-         $household = new Household;
+         $household = Household::firstOrNew(['user_id'=>\Auth::user()->id]);
          $household-> user_id = \Auth::user()->id;
          $household-> state_id = $request->get('state_id');
          $household-> county_id = $request->get('county_id');
@@ -74,8 +74,6 @@ class HouseholdController extends Controller
          $household-> disposal_id = $request->get('disposal_id');
          $household-> deathcounts = $request->get('deathcounts');
  
-        //check if household exists
-        //$household = Household::firstOrNew(['user_id'=>\Auth::user()->id]);
         $household->save();
         return redirect('/household/index')->with('success', 'Household created succesfully'); 
          
@@ -123,14 +121,14 @@ class HouseholdController extends Controller
           
 
         $request->validate([
-            'state_id' => 'required',
-            'county_id' => 'required',
-            'subcounty_id' => 'required',
-            'school_id' => 'required',
-            'cookingmeans_id' => 'required',
-            'structure_id' =>'required',
-            'disposal_id' =>'required',
-            'deathcounts' =>'required'
+            'state_id' => 'bail|required',
+            'county_id' => 'bail|required',
+            'subcounty_id' => 'bail|required',
+            'school_id' => 'bail|required',
+            'cookingmeans_id' => 'bail|required',
+            'structure_id' =>'bail|required',
+            'disposal_id' =>'bail|required',
+            'deathcounts' =>'bail|required|numeric'
  
          ]);
  

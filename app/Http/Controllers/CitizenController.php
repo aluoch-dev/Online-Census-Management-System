@@ -63,18 +63,18 @@ class CitizenController extends Controller
     {
         
         $request->validate([
-            'fname' =>'required|string',
-            'mname' =>'required|string',
-            'sname' =>'required|string',
-            'gender_id' => 'required',
-            'relationship_id' => 'required',
-            'age' =>'required',
-            'relationship_id' =>'required',
-            'field_id' =>'',
-            'disability_id' =>'',
-            'education_id' =>'',
-            'employment_id' =>'',
-            'occupation_id' =>'',
+            'fname' =>'bail|required|string',
+            'mname' =>'bail|required|string',
+            'sname' =>'bail|required|string',
+            'gender_id' => 'bail|required',
+            'relationship_id' => 'bail|required',
+            'age' =>'bail|numeric|required',
+            'relationship_id' =>'bail|required',
+            'field_id' =>'bail|required',
+            'disability_id' =>'bail|required',
+            'education_id' =>'bail|required',
+            'employment_id' =>'bail|required',
+            'occupation_id' =>'bail|required',
 
         ]);
 
@@ -149,15 +149,15 @@ class CitizenController extends Controller
             'fname' =>'required|string',
             'mname' =>'required|string',
             'sname' =>'required|string',
-            'gender_id' => 'required',
-            'relationship_id' => 'required',
-            'age' =>'required',
-            'relationship_id' =>'required',
-            'field_id' =>'required',
-            'disability_id' =>'required',
-            'education_id' =>'required',
-            'employment_id' =>'required',
-            'occupation_id' =>'required',
+            'gender_id' => 'bail|required',
+            'relationship_id' => 'bail|required',
+            'age' =>'bail|required|numeric',
+            'relationship_id' =>'bail|required',
+            'field_id' =>'bail|required',
+            'disability_id' =>'bail|required',
+            'education_id' =>'bail|required',
+            'employment_id' =>'bail|required',
+            'occupation_id' =>'bail|required',
 
         ]);
 
@@ -210,7 +210,7 @@ class CitizenController extends Controller
     {
         Excel::import(new CitizensImport,request()->file('file'));
            
-        return back();
+        return back()->with('success', 'Citizens uploaded successfully');
     }
 
     /**

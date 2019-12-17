@@ -44,8 +44,8 @@ class AssetController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'asset_id' => '',
-            'asset_count' => '', 
+            'asset_id' => 'bail|required',
+            'asset_count' => 'bail|required|numeric', 
  
          ]);
  
@@ -92,8 +92,8 @@ class AssetController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'asset_id' => '',
-            'asset_count' => '', 
+            'asset_id' => 'bail|required',
+            'asset_count' => 'bail|required|numeric', 
  
          ]);
  

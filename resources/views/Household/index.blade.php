@@ -52,11 +52,6 @@
             <div class="form-group row">
 
                 <div class="col-md-6 ">
-                    <a href="{{route('createHousehold') }}" class="btn-sm btn btn-primary">{{ __('Upload Details ') }}</a>
-                </div>
-
-
-                <div class="col-md-6 ">
                     <a href="{{ route('indexCitizen') }}" class="btn-sm btn btn-primary">{{ __('Proceed to Household Members Details') }}</a>
                 </div>
                 

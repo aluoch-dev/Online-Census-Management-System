@@ -13,18 +13,25 @@ class CitizensExport implements FromCollection, WithHeadings
     */
     public function collection()
     {
-        return Citizen::all();
+        //return Citizen::all();
     }
     
     public function headings(): array
     {
         return [
-            'Code',
-            'Description',
-            'Pos',
-            'Mod A',
-            'Mod B',
-            'Charge',
+            '#',
+            'First Name',
+            'Middle Name',
+            'Last Name',
+            'Gender',
+            'Age',
+            'Relation',
+            'Disability',
+            'Education Level',
+            'Field of Study',
+            'Employment Status',
+            'Occupation',
+            'Income Source'
         ];
     }
 }

@@ -47,8 +47,8 @@ class AnimalController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'animal_id' => '',
-            'animal_count' => '', 
+            'animal_id' => 'bail|required',
+            'animal_count' => 'bail|required|numeric', 
  
          ]);
  
@@ -95,8 +95,8 @@ class AnimalController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'animal_id' => '',
-            'animal_count' => '', 
+            'animal_id' => 'bail|required',
+            'animal_count' => 'bail|required|numeric', 
  
          ]);
  
