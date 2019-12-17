@@ -23,9 +23,12 @@
                 </tr>
             </thead>
             <tbody>
+            @php 
+            $row_id =1;
+            @endphp
                 @foreach($households as $household)
                 <tr>    
-                    <td>{{$household->id }}</td>
+                    <td>{{$row_id++ }}</td>
                     <td>{{$household->state->state }}</td>
                     <td>{{$household->county->county_name }}</td>
                     <td>{{$household->subcounty->subcounty_name }}</td>

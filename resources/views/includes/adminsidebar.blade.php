@@ -30,12 +30,6 @@
               <p>Charts</p>
             </a>
           </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./notifications.html">
-              <i class="material-icons">notifications</i>
-              <p>Notifications</p>
-            </a>
-          </li>
         </ul>
       </div>
     </div>

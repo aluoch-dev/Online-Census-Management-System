@@ -26,9 +26,12 @@
                     </tr>
                 </thead>
                 <tbody>
+                @php
+                $row_id = 1;
+                @endphp
                     @foreach($households as $household)
                     <tr>    
-                        <td>{{$household->id }}</td>
+                        <td>{{$row_id++ }}</td>
                         <td>{{$household->state->state }}</td>
                         <td>{{$household->county->county_name }}</td>
                         <td>{{$household->subcounty->subcounty_name }}</td>
@@ -70,9 +73,12 @@
                     </tr>
                 </thead>
                 <tbody>
+                @php
+                $row_id = 1;
+                @endphp
                     @foreach($citizens as $citizen)
                     <tr>    
-                        <td>{{$citizen->id }}</td>
+                        <td>{{$row_id++ }}</td>
                         <td>{{$citizen->fname }}</td>
                         <td>{{$citizen->mname }}</td>
                         <td>{{$citizen->sname }}</td>
@@ -117,9 +123,12 @@
                         </tr>
                     </thead>
                     <tbody>
+                    @php
+                    $row_id = 1;
+                    @endphp
                         @foreach($animalownerships as $animalownership)
                         <tr> 
-                            <td></td>   
+                            <td>{{$row_id++ }}</td>   
                             <td>{{$animalownership->animal->animal }}</td>
                             <td>{{$animalownership->animal_count }}</td>
                             <td>
@@ -153,9 +162,12 @@
                         </tr>
                     </thead>
                     <tbody>
+                    @php
+                    $row_id = 1;
+                    @endphp
                         @foreach($assetownerships as $assetownership)
                         <tr> 
-                            <td></td>   
+                            <td>{{ $row_id++ }}</td>   
                             <td>{{$assetownership->asset->asset }}</td>
                             <td>{{$assetownership->asset_count }}</td>
                             <td>
@@ -176,21 +188,13 @@
                     </tbody>
                 </table>
             </div>
-
-        <div class="card-body">
-            <div class="form-group row">
-                <div class="col-md-6 ">
-                    <a href="{{ route('indexCitizen') }}" class="btn-sm btn btn-primary">{{ __('Print Details') }}</a>
-                </div>
-                
-            </div>
-        </div>
 </div>
 
 <div class="clearfix"></div>
 
             <div align="center">
-                <button onclick="history.back()" target="_blank" class="btn btn-primary"><i class="fa fa-backward"></i> Back</button>
-                <button onclick="genPDF()" target="_blank" class="btn btn-primary"><i class="fa fa-print"></i> Print</button>
+                <button onclick="history.back()" target="_blank" class="btn btn-primary"><i class="fa fa-backward"></i> Previous Page</button>
+                <button onclick="genPDF()" target="_blank" class="btn btn-primary"><i class="fa fa-print"></i> Print Report</button>
+            </div>
             </div>
 @endsection

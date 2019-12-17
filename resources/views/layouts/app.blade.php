@@ -96,7 +96,9 @@
 
     var img=canvas.toDataURL("image/png");
     var doc = new jsPDF();
-    doc.addImage(img,'JPEG',40,20);
+    var width = doc.internal.pageSize.getWidth();
+    var height = doc.internal.pageSize.getHeight();
+    doc.addImage(img,'JPEG',0, 0, width, height);
     // doc.save('receipt.pdf');
     window.open(doc.output('bloburl'), '_blank');
     }

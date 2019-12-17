@@ -10,16 +10,19 @@
         <thead>
             <tr>
                 <th>#</th>
-                <th>Animal</th>
+                <th>Asset</th>
                 <th>Count</th>
                 
                 <th colspan="2">Manage Animals</th>
             </tr>
         </thead>
         <tbody>
+        @php
+        $row_id =1;
+        @endphp
             @foreach($assetownerships as $assetownership)
             <tr> 
-                <td></td>   
+                <td>{{$row_id++ }}</td>   
                 <td>{{$assetownership->asset->asset }}</td>
                 <td>{{$assetownership->asset_count }}</td>
                 <td>

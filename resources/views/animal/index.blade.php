@@ -17,9 +17,12 @@
             </tr>
         </thead>
         <tbody>
+        @php 
+        $row_id=1;
+        @endphp
             @foreach($animalownerships as $animalownership)
             <tr> 
-                <td></td>   
+                <td>{{$row_id++ }}</td>   
                 <td>{{$animalownership->animal->animal }}</td>
                 <td>{{$animalownership->animal_count }}</td>
                 <td>

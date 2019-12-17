@@ -71,10 +71,3 @@ Route::delete('asset/destroy/{asset}', 'AssetController@destroy')->name('destroy
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('enumeration/report','HomeController@enumeration')->name('enumerationReport');
 });
-
-//setting the home page to prevent backhistory after log out
-Route::group(['middleware' => 'auth', 'PreventBackHistory'],function(){
-    Route::get('/', function () {
-        return view('welcome');   
-    });
-});

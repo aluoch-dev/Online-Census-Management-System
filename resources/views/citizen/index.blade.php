@@ -26,9 +26,12 @@
             </tr>
         </thead>
         <tbody>
+        @php 
+        $row_id = 1;
+        @endphp
             @foreach($citizens as $citizen)
             <tr>    
-                <td>{{$citizen->id }}</td>
+                <td>{{$row_id++ }}</td>
                 <td>{{$citizen->fname }}</td>
                 <td>{{$citizen->mname }}</td>
                 <td>{{$citizen->sname }}</td>
